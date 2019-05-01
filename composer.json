@@ -1,0 +1,26 @@
+{
+    "name": "uspdev/laravel-usp-theme",
+    "version": "dev-master",
+    "minimum-stability": "dev",
+    "description": "usp theme for laravel",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Thiago Gomes Verissimo",
+            "email": "thiago.verissimo@usp.br"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Uspdev\\UspTheme\\UspThemeServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4" : {
+            "Uspdev\\UspTheme\\" : "src"
+        }
+    }
+}

@@ -1,56 +1,62 @@
-<!doctype html>
-<html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="/favicon.ico">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>@yield('title')</title>
 
-        <title>@yield('title')</title>
+  @section('styles')
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('/css/style.css')}}">
+  @show
 
-        <!-- Javascript -->
-        @section('javascripts_head')
-        @show
+  @section('javascripts_head')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  @show
+</head>
 
-        <!-- CSS -->
-        @section('styles')
-            <link rel="stylesheet" href="{{ asset('/css/app.css')}}">
-        @show
-    </head>
+<body>
 
-    <body>
-        {{--@include('laravel-usp-theme::partials.nav')--}}
 
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col text-center">
-                @yield('header')
 
-            </div>
-          </div>
-          <div class="row justify-content-end mb-1">
-             @yield('right-top-menu')
-          </div>
-          <div class="row">
-            @include('laravel-usp-theme::partials.menu')
-          </div>
-          <div class="row">
-            <main role="main" class="p-5 container-fluid">
-                @yield('content')
-            </main>
-          </div>
-          <div class="row">
-            <div class="col">
-              <footer class="page-footer font-small blue">
-                @include('laravel-usp-theme::partials.footer')
-              </footer>
-            </div>
-          </div>
-        </div>
+  <div class="container-fluid">
+      <div class="row">
+    <div class="col-md-2">
+      <a class="logo-imagem" href="#"></a>
+    </div>
 
-        @section('javascripts')
-            <script type="text/javascript" src="{{ asset('/js/script.js') }}"></script>
-        @show
-    </body>
+    <div class="col-md-6">
+      <a class="logo-texto" href="#"></a>
+    </div>
+</div>
+    @yield('header')
+  <div class="row">
+    <div class="logo-faixa">
+      <p class="texto-usuario">987654321 - Nome do usuário | PAPEL   | <strong>Sair</strong></p>
+    </div>
+  </div>
+  </div>
+
+  <div class="container-fluid">
+<div class="row">
+  @include('laravel-usp-theme::partials.menu')
+</div>
+
+
+
+<div class="row">
+
+  <div id="content" class="container">
+    @yield('content')
+  </div>
+
+</div>
+
+@include('laravel-usp-theme::partials.footer')
+
+@section('javascripts')
+  <script type="text/javascript" src="{{ asset('/js/script.js') }}"></script>
+@show
+
+</body>
 </html>

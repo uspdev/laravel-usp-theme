@@ -7,6 +7,10 @@ To install the package:
 
     composer require uspdev/laravel-usp-theme
 
+Publish assets:
+
+    php artisan vendor:publish --provider="Uspdev\UspTheme\UspThemeServiceProvider" --tag=assets --force
+
 Extends **laravel-usp-theme master** on your template:
 
     @extends('laravel-usp-theme::master')

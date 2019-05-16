@@ -6,7 +6,7 @@
 
   @section('styles')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('/vendor/laravel-usp-theme/css/style.css')}}">
   @show
 
   @section('javascripts_head')
@@ -55,7 +55,7 @@
 @include('laravel-usp-theme::partials.footer')
 
 @section('javascripts')
-  <script type="text/javascript" src="{{ asset('/js/script.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('/vendor/laravel-usp-theme/js/script.js') }}"></script>
 @show
 
 </body>

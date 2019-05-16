@@ -1,6 +1,6 @@
 # Laravel theme for USP projects
 
-![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/theme.png)
+![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/example.png)
 static files: https://www.ime.usp.br/~marcelom/template/
 
 To install the package:

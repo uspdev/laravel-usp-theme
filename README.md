@@ -2,6 +2,8 @@ modelo: https://www.ime.usp.br/~marcelom/template/
 
 # Laravel theme for USP projects
 
+![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/theme.png)
+
 To install the package:
 
     composer require uspdev/laravel-usp-theme

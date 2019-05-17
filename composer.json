@@ -1,6 +1,5 @@
 {
     "name": "uspdev/laravel-usp-theme",
-    "version": "dev-master",
     "minimum-stability": "dev",
     "description": "usp theme for laravel",
     "type": "library",

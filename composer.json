@@ -14,7 +14,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Uspdev\\UspTheme\\UspThemeServiceProvider"
+                "Uspdev\\UspTheme\\ServiceProvider"
             ]
         }
     },

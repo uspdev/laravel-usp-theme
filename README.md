@@ -9,7 +9,7 @@ To install the package:
 
 Publish assets:
 
-    php artisan vendor:publish --provider="Uspdev\UspTheme\UspThemeServiceProvider" --tag=assets --force
+    php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=assets --force
 
 Extends **laravel-usp-theme master** on your template:
 

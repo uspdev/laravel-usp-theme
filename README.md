@@ -11,6 +11,10 @@ Publish assets:
 
     php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=assets --force
 
+Config:
+
+    php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=config
+
 Extends **laravel-usp-theme master** on your template:
 
     @extends('laravel-usp-theme::master')

@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Support\Facades\View;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -22,6 +23,11 @@ class ServiceProvider extends BaseServiceProvider
         $this->loadViews();
         $this->loadTranslations();
         $this->publishAssets();
+        $this->publishConfig();
+
+        // config
+        View::share('title', config('laravel-usp-theme.title'));
+        View::share('menu', config('laravel-usp-theme.menu'));
     }
 
     /**
@@ -62,6 +68,15 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             $this->packagePath('resources/assets') => public_path('vendor/laravel-usp-theme'),
         ], 'assets');
+    }
+
+    private function publishConfig()
+    {
+        $configPath = $this->packagePath('config/laravel-usp-theme.php');
+        $this->publishes([
+            $configPath => config_path('laravel-usp-theme.php'),
+        ], 'config');
+        $this->mergeConfigFrom($configPath, 'laravel-usp-theme');
     }
 
 }

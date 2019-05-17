@@ -1,48 +1,50 @@
-# Laravel theme for USP projects
+# Laravel package theme for USP projects
+
+Desenvolver um sistema web é uma atividade que envolve diversas camadas
+de complexidade e é natural termos mais habilidade ou gosto por apenas
+uma ou algumas dessas camadas.
+Esse pacote laravel é um template com alguns estilos da USP
+é direcionado para aqueles(as) que preferem se debruçar
+no desenvolvimento do backend com laravel sem se preocupar muito
+com frontend, evita também que fiquemos copiando código do template
+de um projeto para o outro. Foi inspirado no [adminLte para laravel](https://github.com/jeroennoten/Laravel-AdminLTE)
+e está aberto a contribuições e melhorias dos devs da USP.
+Inicialmente desenvolvido por [@marcelomodesto](https://github.com/marcelomodesto) do IME-USP.
 
 ![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/example.png)
-static files: https://www.ime.usp.br/~marcelom/template/
 
-To install the package:
+Para instalação, use o composer:
 
     composer require uspdev/laravel-usp-theme
 
-Publish assets:
+Publique os assets:
 
     php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=assets --force
 
-Config:
+E por fim os arquivos de configuração:
 
     php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=config
 
-Extends **laravel-usp-theme master** on your template:
+Edite o arquivo com as variáveis de seu ambiente:
+
+ - config/laravel-usp-theme.php
+
+Por fim, extenda o **laravel-usp-theme master** no template do seu projeto:
 
     @extends('laravel-usp-theme::master')
 
-Sections availables:
+Seçoes disponíveis:
 
  - title
- - sitename
- - menu
  - content
  - stylesheets (it is a good idea to use: *{{ parent() }}*)
  - javascripts (it is a good idea to use: *{{ parent() }}*)
 
-Publish assets configuring in your webpack.mix.js:
-
-    TODO: inserir comandos
-
-An example that can be inserted in your base.html.twig:
+Exemplo básico:
 
     @extends('laravel-usp-theme::master')
 
     @section('title') Sistema USP @endsection
-
-    @section('menu')
-    <ul>
-        <li> <a href="#"> Sobre </a> </li>
-    </ul>
-    @endsection
 
     @section('content')
         Seu código

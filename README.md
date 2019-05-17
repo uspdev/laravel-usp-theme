@@ -37,8 +37,18 @@ Seçoes disponíveis:
 
  - title
  - content
- - stylesheets (it is a good idea to use: *{{ parent() }}*)
- - javascripts (it is a good idea to use: *{{ parent() }}*)
+ - footer
+
+Seções para css e javascript. É uma boa ideia usar
+*{{ parent() }}* para herdar os css/js default:
+
+ - styles
+ - javascripts_head
+ - javascripts_bottom
+
+Na barra "azul" o template espera rotas nomeadas
+para login ou logout. Se não existirem serão usadas 
+urls: /login e /logout.
 
 Exemplo básico:
 
@@ -47,5 +57,9 @@ Exemplo básico:
     @section('title') Sistema USP @endsection
 
     @section('content')
+        Seu código
+    @endsection
+
+    @section('footer')
         Seu código
     @endsection

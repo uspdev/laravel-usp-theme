@@ -32,9 +32,9 @@
       <p class="texto-usuario">
 
         @auth
-            {{ Auth::user()->id }} - {{ Auth::user()->name }} |
+            {{ Auth::user()->name or "Usuário não identificado" }} |
         @else
-          123456 - Não autenticado |
+            Não autenticado |
         @endauth
 
         <strong>

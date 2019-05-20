@@ -2,9 +2,9 @@
 <footer class="rodape">
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2019
+    <div class="footer-copyright text-center py-3">
       @section('footer')
-        <a href="https://github.com/uspdev/"> USPDev</a>
+        <a href="https://github.com/uspdev/">© 2019 USPDev</a>
       @show
     </div>
 </footer>

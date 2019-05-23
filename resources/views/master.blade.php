@@ -32,27 +32,19 @@
       <p class="texto-usuario">
 
         @auth
-            {{ Auth::user()->name or "Usuário não identificado" }} |
+            {{ Auth::user()->name }} - {{ Auth::user()->email }} |
+                @if ( $logout_method == 'POST' ) 
+                    <form action="/{{ $logout_url }}" method="POST" style="display: inline-block;">
+                        {{ csrf_field() }}
+                         <button type="submit" style="background: none;border: none;padding: 0;">Sair</button>
+                    </form>
+                @else
+                    <strong> <a href="/{{ $logout_url }}">Sair</a> </strong>
+                @endif
         @else
-            Não autenticado |
+            Não autenticado | <strong> <a href="/{{ $login_url }}">Entrar</a> </strong>
         @endauth
-
-        <strong>
-            @auth
-                @if(Route::has('logout'))
-                    <a href="{{ route('logout') }}">Sair</a>
-                @else
-                    <a href="/logout">Sair</a>
-                @endif
-            @else
-                @if(Route::has('login'))
-                    <a href="{{ route('login') }}">Entrar</a>
-                @else
-                    <a href="/login">Entrar</a>
-                @endif
-
-            @endauth
-        </strong>
+        
       </p>
     </div>
   </div>

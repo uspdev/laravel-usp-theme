@@ -46,10 +46,6 @@ Seções para css e javascript. É uma boa ideia usar
  - javascripts_head
  - javascripts_bottom
 
-Na barra "azul" o template espera rotas nomeadas
-para login ou logout. Se não existirem serão usadas 
-urls: /login e /logout.
-
 Exemplo básico:
 
     @extends('laravel-usp-theme::master')

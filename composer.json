@@ -10,11 +10,25 @@
             "email": "thiago.verissimo@usp.br"
         }
     ],
+    "require": {
+        "oomphinc/composer-installers-extender": "^1.1",
+        "bower-asset/bootstrap": "^3.4.1"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
     "extra": {
         "laravel": {
             "providers": [
                 "Uspdev\\UspTheme\\ServiceProvider"
             ]
+        },
+        "installer-types": ["bower-asset", "npm-asset"],
+        "installer-paths": {
+            "public/assets/{$name}/": ["type:bower-asset", "type:npm-asset"]
         }
     },
     "autoload": {

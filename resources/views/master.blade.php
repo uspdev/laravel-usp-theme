@@ -39,7 +39,8 @@
                         @if ( $logout_method == 'POST' )
                         <form action="{{ $logout_url }}" method="POST" class="form-inline" style="display:inline-block">
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-link btn-sm text-white nounderline pt-0 pb-0 pr-2 pl-2">Sair</button>
+                            <!-- O uso do link ao invés do botao é para poder formatar corretamente -->
+                            <a onclick="document.getElementById('logout_form').submit(); return false;" class="font-weight-bold text-white nounderline pr-2 pl-2" href>Sair</a>
                         </form>
                         @else
                         <a class="font-weight-bold text-white nounderline pr-2 pl-2" href="{{ $logout_url }}">Sair</a>

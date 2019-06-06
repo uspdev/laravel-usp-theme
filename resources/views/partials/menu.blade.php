@@ -11,6 +11,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
+        @auth
             <ul class="navbar-nav">
                 @foreach ($menu as $item)
                 @isset($item['can'])
@@ -22,6 +23,7 @@
                 @endisset
                 @endforeach
             </ul>
+            @endauth
         </div>
     </div>
 </nav>

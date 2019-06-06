@@ -37,9 +37,9 @@
                         @auth
                         {{ Auth::user()->name }} - {{ Auth::user()->email }} |
                         @if ( $logout_method == 'POST' )
-                        <form action="{{ $logout_url }}" method="POST" style="display: inline-block;">
+                        <form action="{{ $logout_url }}" method="POST" style="form-inline">
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-link pr-2 pl-2">Sair</button>
+                            <button type="submit" class="btn btn-link btn-sm text-white nounderline pr-2 pl-2">Sair</button>
                         </form>
                         @else
                         <a class="font-weight-bold text-white nounderline pr-2 pl-2" href="{{ $logout_url }}">Sair</a>

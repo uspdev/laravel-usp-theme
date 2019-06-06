@@ -12,7 +12,9 @@
 
     @section('javascripts_head')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     @show
 </head>
@@ -21,34 +23,33 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <a class="logo-imagem" href="/"></a>
-            </div>
-
-            <div class="col-md-6">
                 <a class="logo-texto" href="/"></a>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="logo-faixa">
-                    <p class="texto-usuario">
+                    <div Class="d-flex justify-content-end">
 
                         @auth
                         {{ Auth::user()->name }} - {{ Auth::user()->email }} |
                         @if ( $logout_method == 'POST' )
-                        <form action="/{{ $logout_url }}" method="POST" style="display: inline-block;">
+                        <form action="{{ $logout_url }}" method="POST" style="display: inline-block;">
                             {{ csrf_field() }}
-                            <button type="submit" style="background: none;border: none;padding: 0;">Sair</button>
+                            <button type="submit" style="btn btn-link pr-2 pl-2">Sair</button>
                         </form>
                         @else
-                        <strong> <a href="/{{ $logout_url }}">Sair</a> </strong>
+                        <a class="font-weight-bold text-white nounderline pr-2 pl-2" href="{{ $logout_url }}">Sair</a>
                         @endif
                         @else
-                        Não autenticado | <strong> <a href="/{{ $login_url }}">Entrar</a> </strong>
+                        Não autenticado |
+                        <a class="font-weight-bold text-white nounderline pr-2 pl-2" href="{{ $login_url }}">Entrar</a>
                         @endauth
 
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,7 +57,9 @@
 
     <div class="container-fluid">
         <div class="row">
-            @include('laravel-usp-theme::partials.menu')
+            <div class="col-md-12">
+                @include('laravel-usp-theme::partials.menu')
+            </div>
         </div>
 
         <div class="row">
@@ -94,4 +97,5 @@
         @show
 
 </body>
+
 </html>

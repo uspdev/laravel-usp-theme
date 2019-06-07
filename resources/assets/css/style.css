@@ -1,44 +1,44 @@
-.logo {
-  clear: both;
-}
-
 .logo-faixa {
-    background-image: url(../images/bg-headtop.gif);
-    margin-bottom: 5px;
-    text-align: right;
-    color: white;
-    padding-top: 12px;
-    font-size: 15px;
+  background-image: url(../images/bg-headtop.gif);
+  margin-bottom: 5px;
+  text-align: right;
+  color: white;
+  padding-top: 12px;
+  font-size: 15px;
 }
 
 
 .logo-texto {
-    background: url(../images/usp-logo-texto.png) no-repeat;
-    width: 260px;
-    height: 50px;
-    margin: 5px;
-    padding: 10px;
-    float: left;
-    text-indent: -9999px;
+  background: url(../images/usp-logo-texto.png) no-repeat;
+  width: 260px;
+  height: 50px;
+  margin: 5px;
+  padding: 10px;
+  float: left;
+  text-indent: -9999px;
 }
 
 
 .logo-imagem {
-    background: url(../images/usp-logo.png) no-repeat;
-    width: 130px;
-    height: 50px;
-    margin: 5px;
-    padding: 10px;
-    float: left;
-    text-indent: -9999px;
+  background: url(../images/usp-logo.png) no-repeat;
+  width: 130px;
+  height: 50px;
+  margin: 5px;
+  padding: 10px;
+  float: left;
+  text-indent: -9999px;
 }
 
 .texto-usuario {
-  margin-right: 10px;
+margin-right: 10px;
 }
 
-.rodape {
-    background-color: #f8f8f8;
-    margin-top: 30px;
-    padding: 40px;
+
+.nounderline {
+text-decoration: none !important;
+}
+
+/* Coloca cor de fundo no menu quando o item está ativo */
+.active {
+background: lightgray;
 }

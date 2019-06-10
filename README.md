@@ -1,4 +1,4 @@
-# Laravel package theme for USP projects
+# Pacote de tema do Laravel para projetos USPdev
 
 Desenvolver um sistema web é uma atividade que envolve diversas camadas
 de complexidade e é natural termos mais habilidade ou gosto por apenas
@@ -13,7 +13,17 @@ Inicialmente desenvolvido por [@marcelomodesto](https://github.com/marcelomodest
 
 ![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/example.png)
 
-Para instalação, use o composer:
+
+## Requisitos
+
+Este tema foi testado no Laravel 5.6.x mas deve funcionar em outras versões.
+
+Ele é baseado no bootstrap 4.3.x então todos os estilos dele estão disponíveis.
+
+
+## Instalação
+
+Para instalar o tema, use o composer:
 
     composer require uspdev/laravel-usp-theme
 

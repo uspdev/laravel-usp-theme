@@ -11,19 +11,21 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-        @auth
             <ul class="navbar-nav">
                 @foreach ($menu as $item)
-                @isset($item['can'])
-                @if (Gate::check($item['can']))
-                <li class="nav-item"><a class="nav-link" href="{{ $item['url'] }}"> {{$item['text']}} </a></li>
-                @endif
-                @else
-                <li class="nav-item"><a class="nav-link" href="{{ $item['url'] }}"> {{$item['text']}} </a></li>
-                @endisset
+                    @empty($item['can'])
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ $item['url'] }}"> {{$item['text']}} </a>
+                        </li>
+                    @else
+                        @if (Gate::check($item['can']))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ $item['url'] }}"> {{$item['text']}} </a>
+                            </li>
+                        @endif
+                    @endempty
                 @endforeach
             </ul>
-            @endauth
         </div>
     </div>
 </nav>

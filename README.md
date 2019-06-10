@@ -29,11 +29,13 @@ Edite o arquivo com as variáveis de seu ambiente:
 
  - config/laravel-usp-theme.php
 
-Por fim, extenda o **laravel-usp-theme master** no template do seu projeto:
+ Nesse arquivo a variável ```'can' => 'admin'``` controla a disponibilidade dos itens do menu conforme os gates configurados na aplicação. Se can estiver vazio, ```'can' => ''```, o menu será exibido sempre. Para que o menu apareça somente para o gate ```admin``` por exemplo, use ```'can' => 'admin'```.
+
+Por fim, estenda o **laravel-usp-theme master** no template do seu projeto:
 
     @extends('laravel-usp-theme::master')
 
-Seçoes disponíveis:
+Seções disponíveis:
 
  - title
  - content

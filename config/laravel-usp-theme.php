@@ -14,6 +14,7 @@ return [
         [
             'text' => 'Item 2',
             'url'  => '/item2',
+            'can'  => '',
         ],
         [
             'text' => 'Item 3',

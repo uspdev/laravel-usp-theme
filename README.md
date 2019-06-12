@@ -1,4 +1,4 @@
-# Laravel package theme for USP projects
+# Pacote de tema do Laravel para projetos USPdev
 
 Desenvolver um sistema web é uma atividade que envolve diversas camadas
 de complexidade e é natural termos mais habilidade ou gosto por apenas
@@ -13,7 +13,17 @@ Inicialmente desenvolvido por [@marcelomodesto](https://github.com/marcelomodest
 
 ![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/example.png)
 
-Para instalação, use o composer:
+
+## Requisitos
+
+Este tema foi testado no Laravel 5.6.x mas deve funcionar em outras versões.
+
+Ele é baseado no bootstrap 4.3.x então todos os estilos dele estão disponíveis.
+
+
+## Instalação
+
+Para instalar o tema, use o composer:
 
     composer require uspdev/laravel-usp-theme
 
@@ -29,11 +39,13 @@ Edite o arquivo com as variáveis de seu ambiente:
 
  - config/laravel-usp-theme.php
 
-Por fim, extenda o **laravel-usp-theme master** no template do seu projeto:
+ Nesse arquivo a variável ```'can' => 'admin'``` controla a disponibilidade dos itens do menu conforme os gates configurados na aplicação. Se can estiver vazio, ```'can' => ''```, o menu será exibido sempre. Para que o menu apareça somente para o gate ```admin``` por exemplo, use ```'can' => 'admin'```.
+
+Por fim, estenda o **laravel-usp-theme master** no template do seu projeto:
 
     @extends('laravel-usp-theme::master')
 
-Seçoes disponíveis:
+Seções disponíveis:
 
  - title
  - content

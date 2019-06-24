@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'=> 'USPdev',
+    'title'=> env('APP_NAME'),
     'dashboard_url' => '/',
     'logout_method' => 'GET',
     'logout_url' => 'logout',

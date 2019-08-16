@@ -98,7 +98,7 @@
         @section('javascripts_bottom')
         <script type="text/javascript" src="{{ asset('/vendor/laravel-usp-theme/js/script.js') }}"></script>
         <!-- Datepicker -->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript">
@@ -117,6 +117,31 @@
         });
         </script>   
         <!-- Datepicker --> 
+        <!-- DataTables -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+        $(function () {
+            //DataTables
+            $('.dataTable').DataTable({
+                language    	: {
+                    url         : 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json'
+                },  
+                paging      	: true,
+                lengthChange	: true,
+                searching   	: true,
+                ordering    	: true,
+                info        	: true,
+                autoWidth   	: true,
+                lengthMenu		: [
+					[ 10, 25, 50, 100, -1 ],
+					[ '10 linhas', '25 linhas', '50 linhas', '100 linhas', 'Mostar todos' ]
+    			],
+				pageLength  	: -1
+            });
+        });
+        </script>
+        <!-- DataTables -->        
         @show
 
 </body>

@@ -23,9 +23,13 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <a class="logo-imagem" href="/"></a>
-                <a class="logo-texto" href="/"></a>
+            <div class="col-md-12 logos-header">
+                <a class="logo-imagem" href="/">
+                    <img src="{{ asset('/vendor/laravel-usp-theme/images/usp-logo.png') }}" alt="Logo da Universidade de São Paulo" />
+                </a>
+                <a class="logo-texto" href="/">
+                    <img src="{{ asset('/vendor/laravel-usp-theme/images/usp-logo-texto.png') }}" alt="Universidade de São Paulo" />
+                </a>
             </div>
         </div>
 

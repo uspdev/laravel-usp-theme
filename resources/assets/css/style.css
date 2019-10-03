@@ -8,25 +8,27 @@
 }
 
 
+.logos-header {
+  margin-bottom: 10px;
+}
+
 .logo-texto {
-  background: url(../images/usp-logo-texto.png) no-repeat;
+  display: block;
   width: 260px;
   height: 50px;
   margin: 5px;
   padding: 10px;
   float: left;
-  text-indent: -9999px;
 }
 
 
 .logo-imagem {
-  background: url(../images/usp-logo.png) no-repeat;
+  display: block;
   width: 130px;
   height: 50px;
   margin: 5px;
   padding: 10px;
   float: left;
-  text-indent: -9999px;
 }
 
 .texto-usuario {

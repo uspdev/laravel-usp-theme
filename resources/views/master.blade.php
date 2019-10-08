@@ -41,7 +41,7 @@
                         @auth
                             {{ Auth::user()->name }} - {{ Auth::user()->email }} |
                             @if ( $logout_method == 'POST' )
-                                <form action="{{ $logout_url }}" method="POST" class="form-inline" 
+                                <form action="/{{ $logout_url }}" method="POST" class="form-inline" 
                                     style="display:inline-block" id="logout_form">
                                     {{ csrf_field() }}
                                     <!-- O uso do link ao invés do botao é para poder formatar corretamente -->

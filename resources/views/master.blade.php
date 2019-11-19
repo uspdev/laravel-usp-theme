@@ -146,6 +146,19 @@
         });
         </script>
         <!-- DataTables -->        
+        <!-- Select2 -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+        <script type="text/javascript">
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2({
+                placeholder:    "Selecione",
+                allowClear:     true
+            });
+        });
+        </script>
+        <!-- Select2 -->
         @show
 
 </body>

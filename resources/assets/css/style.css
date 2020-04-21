@@ -7,7 +7,6 @@
   font-size: 15px;
 }
 
-
 .logos-header {
   margin-bottom: 10px;
 }
@@ -21,7 +20,6 @@
   float: left;
 }
 
-
 .logo-imagem {
   display: block;
   width: 130px;
@@ -32,15 +30,37 @@
 }
 
 .texto-usuario {
-margin-right: 10px;
+  margin-right: 10px;
 }
 
-
 .nounderline {
-text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 /* Coloca cor de fundo no menu quando o item está ativo */
 .active {
-background: lightgray;
+  background: lightgray;
 }
+
+/* Cores para menu principal */
+
+#navbarNav ul.navbar-nav li.nav-item a:link {
+  color: black;
+  text-decoration: none;
+}
+
+#navbarNav ul.navbar-nav li.nav-item a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+#navbarNav ul.navbar-nav li.nav-item a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+#navbarNav ul.navbar-nav li.nav-item a:active {
+  color: black;
+  text-decoration: none;
+}
+

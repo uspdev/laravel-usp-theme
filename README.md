@@ -39,7 +39,7 @@ Edite o arquivo com as variáveis de seu ambiente:
 
  - config/laravel-usp-theme.php
 
- Nesse arquivo a variável ```'can' => 'admin'``` controla a disponibilidade dos itens do menu conforme os gates configurados na aplicação. Se can estiver vazio, ```'can' => ''```, o menu será exibido sempre. Para que o menu apareça somente para o gate ```admin``` por exemplo, use ```'can' => 'admin'```.
+ Nesse arquivo a variável ```'can' => 'admin'``` controla a disponibilidade dos itens do menu conforme os gates configurados na aplicação. Se can estiver vazio, ```'can' => ''```, o menu será exibido sempre. Para que o menu apareça somente para o gate ```admin``` por exemplo, use ```'can' => 'admin'```. É possível que o menu tenha itens com subitens no estilo dropdown, para isso, em um item do array do menu crie uma chave *submenu* com um array seguindo a mesma estrutura do array principal.
 
 Por fim, estenda o **laravel-usp-theme master** no template do seu projeto:
 

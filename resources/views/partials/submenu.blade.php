@@ -7,17 +7,17 @@
 
       <div class="dropdown-menu">
         @foreach ($item['submenu'] as $submenu_item)
-          @empty($submenu_item['can'])
-            <button class="dropdown-item" type="button">
-            <a href="{{ $submenu_item['url'] }}"> {{$submenu_item['text']}} </a>
-            </button>
-          @else
+          @isset($submenu_item['can'])
             @if (Gate::check($submenu_item['can']))
               <button class="dropdown-item" type="button">
               <a href="{{ $submenu_item['url'] }}"> {{$submenu_item['text']}} </a>
               </button>
             @endif
-          @endempty
+          @else
+            <button class="dropdown-item" type="button">
+            <a href="{{ $submenu_item['url'] }}"> {{$submenu_item['text']}} </a>
+            </button>
+         @endisset
         @endforeach
       </div>
     </div>

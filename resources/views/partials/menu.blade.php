@@ -12,19 +12,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                @foreach ($menu as $item)
-                    @empty($item['can'])
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ $item['url'] }}"> {{$item['text']}} </a>
-                        </li>
-                    @else
-                        @if (Gate::check($item['can']))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ $item['url'] }}"> {{$item['text']}} </a>
-                            </li>
-                        @endif
-                    @endempty
-                @endforeach
+                @include('laravel-usp-theme::partials.itens_menu')
             </ul>
         </div>
     </div>

@@ -51,8 +51,7 @@ Seções disponíveis:
  - content
  - footer
 
-Seções para css e javascript. É uma boa ideia usar
-*{{ parent() }}* para herdar os css/js default:
+Seções para css e javascript:
 
  - styles
  - javascripts_head

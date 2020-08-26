@@ -2,7 +2,7 @@
 <footer>
     <div class="footer-copyright text-center py-4">
       @section('footer')
-        <a href="https://github.com/uspdev/">© 2019 USPDev</a>
+        <a href="https://github.com/uspdev/">© {{ now()->year }} USPDev</a>
       @show
     </div>
 </footer>

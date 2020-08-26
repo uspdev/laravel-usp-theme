@@ -16,11 +16,11 @@ Inicialmente desenvolvido por [@marcelomodesto](https://github.com/marcelomodest
 
 ## Requisitos
 
-Este tema foi testado no Laravel 5.6.x e 7.24.c mas deve funcionar em outras versões.
+Este tema foi testado no Laravel 5.6.x e 7.24.x mas deve funcionar em outras versões.
 
 Ele é baseado no bootstrap 4.4.1 então todos os estilos dele estão disponíveis.
 
-Possui pre-carregado:
+Possui pré-carregado:
 - fontawesome 5.13.0
 - jquery 3.3.1
 - datatables 1.10.19

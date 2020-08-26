@@ -1,5 +1,3 @@
-<li class="nav-item">
-  <button class="btn" type="button" aria-haspopup="true" aria-expanded="false">
-    <a href="{{ $item['url'] }}"> {{$item['text']}} </a>
-  </button>
+<li class="nav-item {{ request()->url() == $item['url'] ? 'active' : '' }} ">
+    <a class="nav-link" href="{{ $item['url'] }}"> {{ $item['text'] }}</a>
 </li>

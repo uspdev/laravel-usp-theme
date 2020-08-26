@@ -1,62 +1,62 @@
 <?php
 
-$submenu1 =  [
+$submenu1 = [
     [
         'text' => 'SubItem 1',
-        'url'  => '/subitem1'
+        'url' => config('app.url') . '/subitem1',
     ],
     [
         'text' => 'SubItem 2',
-        'url'  => '/subitem2',
-        'can'  => 'admin',
+        'url' => config('app.url') . '/subitem2',
+        'can' => 'admin',
     ],
     [
         'text' => 'SubItem 3',
-        'url'  => '/subitem3',
+        'url' => config('app.url') . '/subitem3',
     ],
 ];
 
-$submenu2 =  [
+$submenu2 = [
     [
         'text' => 'SubItem 1',
-        'url'  => '/subitem1'
+        'url' => config('app.url') . '/subitem1',
     ],
     [
         'text' => 'SubItem 2',
-        'url'  => '/subitem2',
-        'can'  => 'admin',
+        'url' => config('app.url') . '/subitem2',
+        'can' => 'admin',
     ],
 ];
 
 return [
-    'title'=> 'USPdev',
-    'dashboard_url' => '/',
+    'title' => config('app.name'),
+    'dashboard_url' => config('app.url'),
     'logout_method' => 'GET',
-    'logout_url' => '/logout',
-    'login_url' => '/login',
+    'logout_url' => config('app.url') . '/logout',
+    'login_url' => config('app.url') . '/login',
     'menu' => [
         [
             'text' => 'Item 1',
-            'url'  => '/item1'
+            'url' => config('app.url') . '/item1',
         ],
         [
             'text' => 'Item 2',
-            'url'  => '/item2',
-            'can'  => '',
+            'url' => config('app.url') . '/item2',
+            'can' => '',
         ],
         [
             'text' => 'Item 3',
-            'url'  => '/item3',
-            'can'  => 'admin',
+            'url' => config('app.url') . '/item3',
+            'can' => 'admin',
         ],
         [
-            'text'    => 'SubMenu1',
+            'text' => 'SubMenu1',
             'submenu' => $submenu1,
         ],
         [
-            'text'    => 'SubMenu2',
+            'text' => 'SubMenu2',
             'submenu' => $submenu2,
-            'can'  => 'admin',
-        ]
-    ]
+            'can' => 'admin',
+        ],
+    ],
 ];

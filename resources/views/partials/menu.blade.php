@@ -10,14 +10,14 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
+        <div class="navbar-nav mr-auto">
             @include('laravel-usp-theme::partials.itens_menu')
-        </ul>
+        </div>
         {{-- menu direito --}}
         @isset($right_menu)
-        <ul class="navbar-nav ml-md-auto">
+        <div class="navbar-nav ml-md-auto">
             @include('laravel-usp-theme::partials.itens_menu', ['menu' => $right_menu])
-        </ul>
+        </div>
         @endisset
     </div>
 </nav>

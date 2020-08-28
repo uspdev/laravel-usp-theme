@@ -31,7 +31,7 @@ $submenu2 = [
 return [
     'title' => config('app.name'),
     'dashboard_url' => config('app.url'),
-    'logout_method' => 'GET',
+    'logout_method' => 'POST',
     'logout_url' => config('app.url') . '/logout',
     'login_url' => config('app.url') . '/login',
     'menu' => [

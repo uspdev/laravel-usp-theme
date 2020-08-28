@@ -63,6 +63,7 @@ return [
         [
             'text' => '<i class="fas fa-cog"></i>',
             'title' => 'Configurações',
+            'target' => '_blank',
             'url' => config('app.url') . '/item1',
         ],
     ],

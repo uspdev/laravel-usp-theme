@@ -8,10 +8,18 @@
             @foreach ($item['submenu'] as $submenu_item)
                 @isset($submenu_item['can'])
                     @if (Gate::check($submenu_item['can']))
-                        <a class="dropdown-item" href="{{ $submenu_item['url'] }}"> {!! $submenu_item['text'] !!} </a>
+                        <a class="dropdown-item" 
+                        href="{{ $submenu_item['url'] }}"
+                        target="{{ isset($submenu_item['target']) ? $submenu_item['target'] : '' }}"> 
+                            {!! $submenu_item['text'] !!} 
+                        </a>
                     @endif
                 @else
-                    <a class="dropdown-item" href="{{ $submenu_item['url'] }}"> {!! $submenu_item['text'] !!} </a>
+                    <a class="dropdown-item" 
+                    href="{{ $submenu_item['url'] }}"
+                    target="{{ isset($submenu_item['target']) ? $submenu_item['target'] : '' }}"> 
+                        {!! $submenu_item['text'] !!} 
+                    </a>
                 @endisset
             @endforeach
         </div>

@@ -18,14 +18,15 @@ Inicialmente desenvolvido por [@marcelomodesto](https://github.com/marcelomodest
 
 Este tema foi testado no Laravel 5.6.x e 7.24.x mas deve funcionar em outras versões.
 
-Ele é baseado no bootstrap 4.4.1 então todos os estilos dele estão disponíveis.
+Ele é baseado no bootstrap 4.4 então todos os estilos dele estão disponíveis.
 
-Possui pré-carregado:
-- fontawesome 5.13.0
-- jquery 3.3.1
-- datatables 1.10.19
-- select2 4.0.12
-
+Possui também pré-carregado:
+- fontawesome
+- jquery
+- jqueryUI
+- datatables
+- select2
+- datepicker
 
 ## Instalação
 
@@ -60,7 +61,7 @@ acrescentando a linha acima na seção `scripts`->`post-autoload-dump`. Veja um 
     }
 
 
-E por fim publique os arquivos de configuração:
+Publique os arquivos de configuração:
 
     php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=config
 
@@ -107,3 +108,10 @@ Exemplo básico:
     @section('footer')
         Seu código
     @endsection
+
+## Changelog
+
+28/08/2020
+* Layout responsivo com suporte mobile: ajustes no menu
+* Organizando js e css
+* Exemplo das bibliotecas js carregadas

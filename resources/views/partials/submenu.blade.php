@@ -10,14 +10,16 @@
                     @if (Gate::check($submenu_item['can']))
                         <a class="dropdown-item" 
                         href="{{ $submenu_item['url'] }}"
-                        target="{{ isset($item['target']) ? $item['target'] : '' }}"> 
-                            {!! $submenu_item['text'] !!} </a>
+                        target="{{ isset($submenu_item['target']) ? $submenu_item['target'] : '' }}"> 
+                            {!! $submenu_item['text'] !!} 
+                        </a>
                     @endif
                 @else
                     <a class="dropdown-item" 
                     href="{{ $submenu_item['url'] }}"
-                    target="{{ isset($item['target']) ? $item['target'] : '' }}"> 
-                        {!! $submenu_item['text'] !!} </a>
+                    target="{{ isset($submenu_item['target']) ? $submenu_item['target'] : '' }}"> 
+                        {!! $submenu_item['text'] !!} 
+                    </a>
                 @endisset
             @endforeach
         </div>

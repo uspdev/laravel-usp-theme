@@ -29,15 +29,38 @@ Possui pré-carregado:
 
 ## Instalação
 
-Para instalar o tema, use o composer:
+Se você vai iniciar uma nova aplicação, instale o laravel primeiro:
+
+    composer create-project --prefer-dist laravel/laravel minha_aplicacao
+
+Se você já tem uma aplicação laravel ou com a nova aplicação 
+que você criou instale o tema usando o composer:
 
     composer require uspdev/laravel-usp-theme
 
-Publique os assets:
+Publique os assets manualmente
 
     php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=assets --force
 
-E por fim os arquivos de configuração:
+ou configure o composer.json da sua aplicação para publicar automaticamente 
+acrescentando a linha acima na seção `scripts`->`post-autoload-dump`. Veja um exemplo:
+
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi",
+            "@php artisan vendor:publish --provider='Uspdev\\UspTheme\\ServiceProvider' --tag=assets --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+
+
+E por fim publique os arquivos de configuração:
 
     php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=config
 
@@ -45,7 +68,15 @@ Edite o arquivo com as variáveis de seu ambiente:
 
  - config/laravel-usp-theme.php
 
- Nesse arquivo a variável ```'can' => 'admin'``` controla a disponibilidade dos itens do menu conforme os gates configurados na aplicação. Se can estiver vazio, ```'can' => ''```, o menu será exibido sempre. Para que o menu apareça somente para o gate ```admin``` por exemplo, use ```'can' => 'admin'```. É possível que o menu tenha itens com subitens no estilo dropdown, para isso, em um item do array do menu crie uma chave *submenu* com um array seguindo a mesma estrutura do array principal.
+ Nesse arquivo a variável ```'can' => 'admin'``` controla a disponibilidade 
+ dos itens do menu conforme os gates configurados na aplicação. 
+ Se can estiver vazio, ```'can' => ''```, o menu será exibido sempre. 
+ Para que o menu apareça somente para o gate ```admin``` por exemplo, 
+ use ```'can' => 'admin'```. É possível que o menu tenha itens com subitens 
+ no estilo dropdown, para isso, em um item do array do menu crie uma chave 
+ *submenu* com um array seguindo a mesma estrutura do array principal.
+
+É possível colocar ícones no menu ou outro elemento html.
 
 Por fim, estenda o **laravel-usp-theme master** no template do seu projeto:
 

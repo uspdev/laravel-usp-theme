@@ -2,7 +2,7 @@
 
 $submenu1 = [
     [
-        'text' => 'SubItem 1',
+        'text' => '<i class="fas fa-atom"></i>  SubItem 1',
         'url' => config('app.url') . '/subitem1',
     ],
     [
@@ -36,7 +36,7 @@ return [
     'login_url' => config('app.url') . '/login',
     'menu' => [
         [
-            'text' => 'Item 1',
+            'text' => '<i class="fas fa-home"></i> Item 1',
             'url' => config('app.url') . '/item1',
         ],
         [
@@ -57,6 +57,13 @@ return [
             'text' => 'SubMenu2',
             'submenu' => $submenu2,
             'can' => 'admin',
+        ],
+    ],
+    'right_menu' => [
+        [
+            'text' => '<i class="fas fa-cog"></i>',
+            'title' => 'Configurações',
+            'url' => config('app.url') . '/item1',
         ],
     ],
 ];

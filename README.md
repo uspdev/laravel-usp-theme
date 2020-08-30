@@ -79,6 +79,16 @@ Edite o arquivo com as variáveis de seu ambiente:
 
 É possível colocar ícones no menu ou outro elemento html.
 
+Há outros exemplos de configurações possíveis no próprio arquivo.
+
+## Configure o .env
+
+Pode-se habilitar link para outros sistemas. Aparecerá na barra de menu, à esquerda. Para isso coloque no .env algo do tipo:
+
+    USP_THEME_SISTEMAS_1='{"text":"Pessoas","url":"http://localhost/pessoas"}'
+    USP_THEME_SISTEMAS_2='{"text":"LDAP","url":"http://localhost/ldap"}'
+
+
 Por fim, estenda o **laravel-usp-theme master** no template do seu projeto:
 
     @extends('laravel-usp-theme::master')

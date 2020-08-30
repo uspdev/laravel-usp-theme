@@ -2,11 +2,11 @@
 
 namespace Uspdev\UspTheme;
 
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -48,7 +48,7 @@ class ServiceProvider extends BaseServiceProvider
 
     private function packagePath($path)
     {
-        return __DIR__."/../$path";
+        return __DIR__ . "/../$path";
     }
 
     private function loadViews()
@@ -78,11 +78,22 @@ class ServiceProvider extends BaseServiceProvider
 
     private function publishConfig()
     {
-        $configPath = $this->packagePath('config/laravel-usp-theme.php');
-        $this->publishes([
-            $configPath => config_path('laravel-usp-theme.php'),
-        ], 'config');
+        // $configPath = $this->packagePath('config/laravel-usp-theme.php');
+        // $this->publishes([
+        //     $configPath => config_path('laravel-usp-theme.php'),
+        // ], 'config');
         //$this->mergeConfigFrom($configPath, 'laravel-usp-theme');
+
+        $prefix = 'USP_THEME_SISTEMAS';
+        $sistemas = [];
+        foreach ($_ENV as $key => $value) {
+            if (strpos($key, $prefix) !== false) {
+                $sistemas[] = json_decode($value, true);
+            }
+        }
+        $config['sistemas'] = $sistemas;
+
+        $this->mergeConfigFrom($config, 'laravel-usp-theme');
     }
 
 }

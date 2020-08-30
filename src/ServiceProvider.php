@@ -33,6 +33,7 @@ class ServiceProvider extends BaseServiceProvider
         View::share('logout_method', config('laravel-usp-theme.logout_method'));
         View::share('login_url', config('laravel-usp-theme.login_url'));
         View::share('logout_url', config('laravel-usp-theme.logout_url'));
+        View::share('sistemas', config('laravel-usp-theme.sistemas'));
     }
 
     /**
@@ -81,7 +82,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             $configPath => config_path('laravel-usp-theme.php'),
         ], 'config');
-        $this->mergeConfigFrom($configPath, 'laravel-usp-theme');
+        //$this->mergeConfigFrom($configPath, 'laravel-usp-theme');
     }
 
 }

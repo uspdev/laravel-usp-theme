@@ -78,22 +78,16 @@ class ServiceProvider extends BaseServiceProvider
 
     private function publishConfig()
     {
-        // $configPath = $this->packagePath('config/laravel-usp-theme.php');
-        // $this->publishes([
-        //     $configPath => config_path('laravel-usp-theme.php'),
-        // ], 'config');
-        //$this->mergeConfigFrom($configPath, 'laravel-usp-theme');
+        $configPath = $this->packagePath('config/laravel-usp-theme.php');
+        $this->publishes([
+            $configPath => config_path('laravel-usp-theme.php'),
+        ], 'config');
 
-        $prefix = 'USP_THEME_SISTEMAS';
-        $sistemas = [];
-        foreach ($_ENV as $key => $value) {
-            if (strpos($key, $prefix) !== false) {
-                $sistemas[] = json_decode($value, true);
-            }
-        }
-        $config['sistemas'] = $sistemas;
+        //$this->mergeConfigFrom($this->packagePath('config/laravel-usp-theme-sistemas.php'), 'laravel-usp-theme');
+        $sistemas = require $this->packagePath('config/laravel-usp-theme-sistemas.php');
+        $config = $this->app['config']->get('laravel-usp-theme', []);
+        $this->app['config']->set('laravel-usp-theme', array_merge($sistemas, $config));
 
-        $this->mergeConfigFrom($config, 'laravel-usp-theme');
     }
 
 }

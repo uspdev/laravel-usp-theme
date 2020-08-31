@@ -11,22 +11,29 @@ de um projeto para o outro. Foi inspirado no [adminLte para laravel](https://git
 e está aberto a contribuições e melhorias dos devs da USP.
 Inicialmente desenvolvido por [@marcelomodesto](https://github.com/marcelomodesto) do IME-USP.
 
-![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/example.png)
+![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/tela-principal.png)
 
+## Funcionalidades
+
+Estão disponíveis no template:
+
+* Uma bara com o logo da USP que não aparece no tamanho sm (mobile);
+* Uma faixa amarela e azul com as informações de usuário/login/logout à direita;
+* Uma barra de menus e sub-menus totalmente configurável;
+* Possibilidade de oferecer link para outras aplicações da Unidade;
+
+O tema possui as seguintes bibliotecas incorporadas:
+- bootstrap 4.4
+- jquery
+- jqueryUI
+- fontawesome
+- datatables
+- select2
+- datepicker
 
 ## Requisitos
 
 Este tema foi testado no Laravel 5.6.x e 7.24.x mas deve funcionar em outras versões.
-
-Ele é baseado no bootstrap 4.4 então todos os estilos dele estão disponíveis.
-
-Possui também pré-carregado:
-- fontawesome
-- jquery
-- jqueryUI
-- datatables
-- select2
-- datepicker
 
 ## Instalação
 
@@ -39,12 +46,38 @@ que você criou instale o tema usando o composer:
 
     composer require uspdev/laravel-usp-theme
 
-Publique os assets manualmente
+Publique os arquivos de configuração:
 
-    php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=assets --force
+    php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=config
 
-ou configure o composer.json da sua aplicação para publicar automaticamente 
-acrescentando a linha acima na seção `scripts`->`post-autoload-dump`. Veja um exemplo:
+Edite o arquivo para personalizar os menus:
+
+    config/laravel-usp-theme.php
+
+Nesse arquivo, há um exemplo de configurações possíveis para o menu.
+
+A variável ```'can' => 'admin'``` controla a disponibilidade 
+dos itens do menu conforme os gates configurados na aplicação. 
+Se can estiver vazio, ```'can' => ''```, o menu será exibido sempre. 
+Para que o menu apareça somente para o gate ```admin``` por exemplo, 
+use ```'can' => 'admin'```. 
+
+É possível que o menu tenha itens com subitens no estilo dropdown, para isso, em um item do array do menu crie uma chave *submenu* com um array seguindo a mesma estrutura do array principal.
+
+É possível colocar ícones (fontawesome) no menu ou outro elemento html.
+
+
+## Configuração da aplicação
+
+Para poder utilizar o tema, algumas configurações são necessárias.
+
+### Configure o composer.json
+
+Na sua aplicação, configure o composer.json para publicar automaticamente os assets do laravel-usp-theme acrescentando a linha 
+
+    "@php artisan vendor:publish --provider='Uspdev\\UspTheme\\ServiceProvider' --tag=assets --force"
+
+na seção `scripts`->`post-autoload-dump`. Veja um exemplo:
 
     "scripts": {
         "post-autoload-dump": [
@@ -60,36 +93,9 @@ acrescentando a linha acima na seção `scripts`->`post-autoload-dump`. Veja um 
         ]
     }
 
+### Estenda o **laravel-usp-theme master** no template do seu projeto
 
-Publique os arquivos de configuração:
-
-    php artisan vendor:publish --provider="Uspdev\UspTheme\ServiceProvider" --tag=config
-
-Edite o arquivo com as variáveis de seu ambiente:
-
- - config/laravel-usp-theme.php
-
- Nesse arquivo a variável ```'can' => 'admin'``` controla a disponibilidade 
- dos itens do menu conforme os gates configurados na aplicação. 
- Se can estiver vazio, ```'can' => ''```, o menu será exibido sempre. 
- Para que o menu apareça somente para o gate ```admin``` por exemplo, 
- use ```'can' => 'admin'```. É possível que o menu tenha itens com subitens 
- no estilo dropdown, para isso, em um item do array do menu crie uma chave 
- *submenu* com um array seguindo a mesma estrutura do array principal.
-
-É possível colocar ícones no menu ou outro elemento html.
-
-Há outros exemplos de configurações possíveis no próprio arquivo.
-
-## Configure o .env
-
-Pode-se habilitar link para outros sistemas. Aparecerá na barra de menu, à esquerda. Para isso coloque no .env algo do tipo:
-
-    USP_THEME_SISTEMAS_1='{"text":"Pessoas","url":"http://localhost/pessoas"}'
-    USP_THEME_SISTEMAS_2='{"text":"LDAP","url":"http://localhost/ldap"}'
-
-
-Por fim, estenda o **laravel-usp-theme master** no template do seu projeto:
+Edite o seu arquivo ```resources/views/index.blade.php``` e coloque:
 
     @extends('laravel-usp-theme::master')
 
@@ -119,9 +125,29 @@ Exemplo básico:
         Seu código
     @endsection
 
+
+### Configure o .env.example
+
+O laravel-usp-theme é uma biblioteca que funciona junto com uma aplicação laravel e pode usar configurações no .env. Para isso você deve instruir o .env.example adequadamente. Exemplo:
+
+    # https://github.com/uspdev/laravel-usp-theme
+    # O laravel-usp-theme permite que seja criado links 
+    # para outras aplicações da unidade
+    # USP_THEME_SISTEMAS_1='{"text":"Pessoas","url":"http://localhost/pessoas"}'
+    # USP_THEME_SISTEMAS_2='{"text":"LDAP","url":"http://localhost/ldap"}'
+
+
+![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/tela-outros-sistemas.png)
+
+Esta configuração irá habilitar o link para outros sistemas. Aparecerá na barra de menu, à esquerda.
+
+
 ## Changelog
 
 28/08/2020
 * Layout responsivo com suporte mobile: ajustes no menu
 * Organizando js e css
 * Exemplo das bibliotecas js carregadas
+
+31/08/2020
+* Acrescentado menu para outras aplicações

@@ -43,7 +43,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        //
+        //$this->mergeConfigFrom($this->packagePath('config/laravel-usp-theme-sistemas.php'), 'laravel-usp-theme');
+        $sistemas = require $this->packagePath('config/laravel-usp-theme-sistemas.php');
+        $config = $this->app['config']->get('laravel-usp-theme', []);
+        $this->app['config']->set('laravel-usp-theme', array_merge($sistemas, $config));
     }
 
     private function packagePath($path)
@@ -82,12 +85,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             $configPath => config_path('laravel-usp-theme.php'),
         ], 'config');
-
-        //$this->mergeConfigFrom($this->packagePath('config/laravel-usp-theme-sistemas.php'), 'laravel-usp-theme');
-        $sistemas = require $this->packagePath('config/laravel-usp-theme-sistemas.php');
-        $config = $this->app['config']->get('laravel-usp-theme', []);
-        $this->app['config']->set('laravel-usp-theme', array_merge($sistemas, $config));
-
     }
 
 }

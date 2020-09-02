@@ -2,11 +2,11 @@
 
 namespace Uspdev\UspTheme;
 
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -33,6 +33,7 @@ class ServiceProvider extends BaseServiceProvider
         View::share('logout_method', config('laravel-usp-theme.logout_method'));
         View::share('login_url', config('laravel-usp-theme.login_url'));
         View::share('logout_url', config('laravel-usp-theme.logout_url'));
+        View::share('sistemas', config('laravel-usp-theme.sistemas'));
     }
 
     /**
@@ -42,12 +43,15 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        //
+        //$this->mergeConfigFrom($this->packagePath('config/laravel-usp-theme-sistemas.php'), 'laravel-usp-theme');
+        $sistemas = require $this->packagePath('config/laravel-usp-theme-sistemas.php');
+        $config = $this->app['config']->get('laravel-usp-theme', []);
+        $this->app['config']->set('laravel-usp-theme', array_merge($sistemas, $config));
     }
 
     private function packagePath($path)
     {
-        return __DIR__."/../$path";
+        return __DIR__ . "/../$path";
     }
 
     private function loadViews()
@@ -81,7 +85,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             $configPath => config_path('laravel-usp-theme.php'),
         ], 'config');
-        $this->mergeConfigFrom($configPath, 'laravel-usp-theme');
     }
 
 }

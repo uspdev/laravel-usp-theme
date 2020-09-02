@@ -141,6 +141,14 @@ O laravel-usp-theme é uma biblioteca que funciona junto com uma aplicação lar
 
 Esta configuração irá habilitar o link para outros sistemas. Aparecerá na barra de menu, à esquerda.
 
+## Issues
+
+O menu de outros sistemas pode não aparecer ao usar o servidor embutido do php com artisan. Isso está relacionado com o config:cache / config:clear.
+
+Por outro lado usando servidor nginx ou apache deve funcionar corretamente.
+ 
+Issue aberta (#42).
+
 
 ## Changelog
 

@@ -59,6 +59,7 @@
     <div class="container-fluid">
         <div class="row">
             <div id="content" class="col-md-12">
+                @yield('flash')
                 @section('content')
 
                 <h2>Lorem Ipsum</h2>

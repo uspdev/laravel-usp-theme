@@ -12,6 +12,8 @@
         @show
     </title>
 
+    <base href="{{ $dashboard_url }}/">
+    
     <link rel="canonical" href="https://github.com/uspdev/laravel-usp-theme">
 
     @section('styles_default')

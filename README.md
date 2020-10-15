@@ -75,7 +75,7 @@ Para poder utilizar o tema, algumas configurações são necessárias.
 
 Na sua aplicação, configure o composer.json para publicar automaticamente os assets do laravel-usp-theme acrescentando a linha 
 
-    "@php artisan vendor:publish --provider='Uspdev\\UspTheme\\ServiceProvider' --tag=assets --force"
+    "@php artisan vendor:publish --provider=\"Uspdev\\UspTheme\\ServiceProvider\" --tag=assets --force"
 
 na seção `scripts`->`post-autoload-dump`. Veja um exemplo:
 
@@ -83,7 +83,7 @@ na seção `scripts`->`post-autoload-dump`. Veja um exemplo:
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan vendor:publish --provider='Uspdev\\UspTheme\\ServiceProvider' --tag=assets --force"
+            "@php artisan vendor:publish --provider=\"Uspdev\\UspTheme\\ServiceProvider\" --tag=assets --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -92,6 +92,10 @@ na seção `scripts`->`post-autoload-dump`. Veja um exemplo:
             "@php artisan key:generate --ansi"
         ]
     }
+
+Após a inserção da linha mencionada, executar o comando:
+
+    composer install
 
 ### Estenda o **laravel-usp-theme master** no template do seu projeto
 

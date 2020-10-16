@@ -29,16 +29,7 @@
 <body>
     <div class="container-fluid d-none d-sm-block">
         {{-- Vai ocultar em mobile --}}
-        <div class="row">
-            <div class="col-md-12 logos-header">
-                <a class="logo-imagem" href="/">
-                    <img src="{{ asset('/vendor/laravel-usp-theme/images/usp-logo.png') }}" alt="Logo da Universidade de São Paulo" />
-                </a>
-                <a class="logo-texto" href="/">
-                    <img src="{{ asset('/vendor/laravel-usp-theme/images/usp-logo-texto.png') }}" alt="Universidade de São Paulo" />
-                </a>
-            </div>
-        </div>
+        @include('laravel-usp-theme::partials.heade')
     </div>
 
     <div class="logo-faixa">

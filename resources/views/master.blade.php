@@ -29,7 +29,12 @@
 <body>
     <div class="container-fluid d-none d-sm-block">
         {{-- Vai ocultar em mobile --}}
-        @include('laravel-usp-theme::partials.heade')
+        @include('laravel-usp-theme::partials.header')
+        <div class="row">
+        @yield('header-left')
+
+        @yield('header-right')
+        </div>
     </div>
 
     <div class="logo-faixa">

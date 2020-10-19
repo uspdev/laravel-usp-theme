@@ -112,8 +112,8 @@ Seções disponíveis:
 Seções para css e javascript:
 
  - styles
- - javascripts_head
- - javascripts_bottom
+ - javascripts_head (carregado antes das bibliotecas incorporadas)
+ - javascripts_bottom (carregado depois das bibliotecas incorporadas)
 
 Exemplo básico:
 
@@ -128,6 +128,11 @@ Exemplo básico:
     @section('footer')
         Seu código
     @endsection
+
+    @section('javascripts_bottom')
+    @parent
+        Seu código .js
+    @endsection 
 
 
 ### Configure o .env.example

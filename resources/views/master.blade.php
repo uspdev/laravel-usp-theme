@@ -29,15 +29,11 @@
 <body>
     <div class="container-fluid d-none d-sm-block">
         {{-- Vai ocultar em mobile --}}
+        @include('laravel-usp-theme::partials.header')
         <div class="row">
-            <div class="col-md-12 logos-header">
-                <a class="logo-imagem" href="/">
-                    <img src="{{ asset('/vendor/laravel-usp-theme/images/usp-logo.png') }}" alt="Logo da Universidade de São Paulo" />
-                </a>
-                <a class="logo-texto" href="/">
-                    <img src="{{ asset('/vendor/laravel-usp-theme/images/usp-logo-texto.png') }}" alt="Universidade de São Paulo" />
-                </a>
-            </div>
+        @yield('header-left')
+
+        @yield('header-right')
         </div>
     </div>
 

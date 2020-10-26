@@ -150,6 +150,26 @@ O laravel-usp-theme é uma biblioteca que funciona junto com uma aplicação lar
 
 Esta configuração irá habilitar o link para outros sistemas. Aparecerá na barra de menu, à esquerda.
 
+## Opções do menu
+
+Há dois menus principais, um alinhado à esquerda e outro alinhado à direita. Veja o arquivo de configuração como exemplo.
+
+Cada item do menu principal pode conter os seguintes atributos:
+* **text**: conteúdo a ser exibido
+* **url**: url que será direcionado ao clicar
+* **can**: irá exibir se autorizado. Se inexistente, o item é acessivel por todos
+* **title**: preenche a tag _title_ para mostrar texto de ajuda (opcional)
+
+Se o item for um submenu, deve possuir o atributo **submenu**, que é um array contendo os itens do submenu. Opcionalmente pode conter:
+* **align**: se **right** o submenu será alinhado à direita. Se inexistente, o alinhamento é o padrão (à esquerda)
+
+Os submenus, além dos atributos do menu principal (text, url, can, title), podem ter o atributo **type** com os seguintes valores:
+
+* se **header**, aplica a classe _dropdown-header_ do bootstrap. Deve conter **text** 
+* se **divider**, aplica a classe _dropdown-divider_ do bootstrap. Não exige outras opções 
+
+Submenu pode conter também **target** que adiciona o target correspondente no link.
+
 ## Issues
 
 O menu de outros sistemas pode não aparecer ao usar o servidor embutido do php com artisan. Isso está relacionado com o config:cache / config:clear.
@@ -160,6 +180,9 @@ Issue aberta (#42).
 
 
 ## Changelog
+
+26/10/2020
+* Incluido submenu divider, submenu header e alinhamento direito do submenu (#47)
 
 28/08/2020
 * Layout responsivo com suporte mobile: ajustes no menu

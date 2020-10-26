@@ -11,6 +11,13 @@ $submenu1 = [
         'can' => 'admin',
     ],
     [
+        'type' => 'divider',
+    ],
+    [
+        'type' => 'header',
+        'text' => 'Cabeçalho',
+    ],
+    [
         'text' => 'SubItem 3',
         'url' => config('app.url') . '/subitem3',
     ],
@@ -65,6 +72,7 @@ return [
             'title' => 'Configurações',
             'target' => '_blank',
             'url' => config('app.url') . '/item1',
+            'align' => 'right',
         ],
     ],
 ];

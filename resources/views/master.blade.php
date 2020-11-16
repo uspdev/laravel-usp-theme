@@ -8,41 +8,34 @@
 
     <title>@section('title'){{ $title }}@show</title>
 
-    <base href="{{ $dashboard_url }}/">
+    <base href="{{ $app_url }}/">
 
     <link rel="canonical" href="https://github.com/uspdev/laravel-usp-theme">
 
-    {{-- carrega styles_default e js_bottom_def --}}
-    @include('laravel-usp-theme::partials.assets_default')
+    {{-- Incluindo todos os partials necessários para o theme --}}
+    @include('laravel-usp-theme::partials.partials_loader')
 
+    <!-- Estilos do tema e das bibliotecas internas -->
     @yield('styles_default')
 
-    <link rel="stylesheet" href="{{ asset('/vendor/laravel-usp-theme/css/style.css')}}">
+    <!-- Estilos do skin -->
+    @yield('skin_styles')
 
+    <!-- Estilos da aplicação -->
     @yield('styles')
-
-    @yield('js_head_def') {{-- está vazio --}}
-
-    @yield('javascripts_head')
 </head>
 
 <body>
-    <div class="container-fluid d-none d-sm-block">
-        {{-- Vai ocultar em mobile --}}
-        @include('laravel-usp-theme::partials.header')
-        <div class="row">
-        @yield('header-left')
-
-        @yield('header-right')
-        </div>
+    <div id="skin_header"> {{-- Cria a barra de topo, em geral com o logo da unidade --}}
+        @yield('skin_header')
     </div>
 
-    <div class="logo-faixa">
-        @include('laravel-usp-theme::partials.login_bar')
+    <div id="skin_login_bar"> {{-- Cria a barra de login/logout --}}
+        @yield('skin_login_bar')
     </div>
 
-    <div class="menu">
-        @include('laravel-usp-theme::partials.menu')
+    <div id="menu"> {{-- Cria a barra de menus da aplicação --}}
+        @yield('menu')
     </div>
 
     <div class="container-fluid">
@@ -50,18 +43,22 @@
             <div id="content" class="col-md-12">
                 @yield('flash')
                 @section('content')
+                {{-- Conteúdo principal vai aqui. O include de exemplo deve ser
+                substituído pelo conteúdo da aplicação não usando o @parent --}}
                 @include('laravel-usp-theme::partials.content_sample')
                 @show
             </div>
         </div>
     </div>
 
-    @include('laravel-usp-theme::partials.footer')
+    <div id="skin_footer"> {{-- Cria a barra do rodapé --}}
+        @yield('skin_footer')
+    </div>
 
-    @yield('js_bottom_def')
+    <!-- Bibliotecas js do tema e das bibliotecas internas -->
+    @yield('javascripts_default')
 
-    <script type="text/javascript" src="{{ asset('/vendor/laravel-usp-theme/js/script.js') }}"></script>
-
+    <!-- Bibliotecas js da aplicação -->
     @yield('javascripts_bottom')
 
 </body>

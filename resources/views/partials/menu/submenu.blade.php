@@ -12,10 +12,10 @@ $right = (isset($item['align']) && $item['align'] == 'right') ? 'dropdown-menu-r
             @foreach ($item['submenu'] as $submenu_item)
                 @isset($submenu_item['can'])
                     @if (Gate::check($submenu_item['can']))
-                        @include('laravel-usp-theme::partials.dropdown_item')
+                        @include('laravel-usp-theme::partials.menu.dropdown_item')
                     @endif
                 @else
-                    @include('laravel-usp-theme::partials.dropdown_item')
+                    @include('laravel-usp-theme::partials.menu.dropdown_item')
                 @endisset
             @endforeach
         </div>

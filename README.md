@@ -21,6 +21,7 @@ Estão disponíveis no template:
 * Uma faixa amarela e azul com as informações de usuário/login/logout à direita;
 * Uma barra de menus e sub-menus totalmente configurável;
 * Possibilidade de oferecer link para outras aplicações da Unidade;
+* Presonalização do tema por meio de **skins**;
 
 O tema possui as seguintes bibliotecas incorporadas:
 - bootstrap 4.4
@@ -33,7 +34,7 @@ O tema possui as seguintes bibliotecas incorporadas:
 
 ## Requisitos
 
-Este tema foi testado no Laravel 5.6.x e 7.24.x mas deve funcionar em outras versões.
+Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras versões.
 
 ## Instalação
 
@@ -170,6 +171,32 @@ Os submenus, além dos atributos do menu principal (text, url, can, title), pode
 
 Submenu pode conter também **target** que adiciona o target correspondente no link.
 
+## Skins
+
+A partir da versão 2, o laravel-usp-theme pode ser personalizado por meio de skins. O skin permite personalizar a aparência do sistema.
+
+Um skin pode, por exemplo, trocar o logo da USP pelo logo da Unidade ou trocar a cor da faixa de login.
+
+Para usar um skin, coloque no .env da sua aplicação a varável
+
+    USP_THEME_SKIN = nome_do_skin
+
+Geralmente o nome do skin é a sigla da unidade, mas pode ser qualquer string. Uma unidade pode ter uma skin chamada 'EESC' e outra skin chamada 'EESC65Anos'.
+
+### Criando um skin
+
+Para criar um skin vc deve alterar o projeto laravel-usp-theme. Crie uma issue, faça fork/clone do projeto, altere e faça um pull request.
+
+Vammos supor que você vai criar um skin de nome **USP**. Dentro do projeto localize a pasta resources/view/partials/skins. Nessa pasta, utilize como modelo o skin **uspdev**: crie a pasta **usp** e copie o conteúdo da pasta **uspdev** para ela. Os arquivos que foram copiados podem ser alterados para refletir a aparência desejada.
+
+Os assets que forem utilizados na skin devem ser colocados em pasta própria também. Localize a pasta resources/assets/skins. Crie a pasta **USP** referente ao skin e coloque todos os assets necessários.
+
+Depois de mergear sua skin no laravel-usp-theme você deve atualizar o composer da sua aplicação para poder usar o novo skin.
+
+**Nome da pasta do skin**: o nome da pasta deve ser sempre em minúsculo. Ao setar o USP_THEME_SKIN no .env você pode usar qualquer combinação de maiusculas e minúsculas pois ao buscar a pasta a variável é convertida para minúsculas.
+
+**Sistemas existentes**: se você já usa o theme e quer implementar o skin, lembre de ajustar o config/laravel-usp-theme.php para refletir as novas configurações da versão 2 do tema.
+
 ## Issues
 
 O menu de outros sistemas pode não aparecer ao usar o servidor embutido do php com artisan. Isso está relacionado com o config:cache / config:clear.
@@ -191,3 +218,9 @@ Issue aberta (#42).
 
 31/08/2020
 * Acrescentado menu para outras aplicações
+
+15/11/2020
+* versão 2
+* nova funcionalidade: skins
+* pasta views reorganizada
+* dashboard_url renomeado para app_url

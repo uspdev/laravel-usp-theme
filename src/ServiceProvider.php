@@ -15,11 +15,8 @@ class ServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    public function boot(
-        Factory $view,
-        Dispatcher $events,
-        Repository $config
-    ) {
+    public function boot(Factory $view, Dispatcher $events, Repository $config) 
+    {
         $this->loadViews();
         $this->loadTranslations();
         $this->publishAssets();
@@ -27,9 +24,10 @@ class ServiceProvider extends BaseServiceProvider
 
         // config
         View::share('title', config('laravel-usp-theme.title'));
+        View::share('skin', config('laravel-usp-theme.skin'));
         View::share('menu', config('laravel-usp-theme.menu'));
         View::share('right_menu', config('laravel-usp-theme.right_menu'));
-        View::share('dashboard_url', config('laravel-usp-theme.dashboard_url'));
+        View::share('app_url', config('laravel-usp-theme.app_url'));
         View::share('logout_method', config('laravel-usp-theme.logout_method'));
         View::share('login_url', config('laravel-usp-theme.login_url'));
         View::share('logout_url', config('laravel-usp-theme.logout_url'));

@@ -14,6 +14,7 @@
 
     {{-- DataTables --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" />
     {{-- DataTables --}}
 
     {{-- Select2 --}}
@@ -48,6 +49,7 @@
     {{-- DataTables --}}
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
     {{-- DataTables --}}
 
     {{-- Select2 --}}

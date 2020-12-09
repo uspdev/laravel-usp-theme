@@ -21,14 +21,14 @@ Estão disponíveis no template:
 * Uma faixa amarela e azul com as informações de usuário/login/logout à direita;
 * Uma barra de menus e sub-menus totalmente configurável;
 * Possibilidade de oferecer link para outras aplicações da Unidade;
-* Presonalização do tema por meio de **skins**;
+* Personalização do tema por meio de **skins**;
 
 O tema possui as seguintes bibliotecas incorporadas:
 - bootstrap 4.4
 - jquery
 - jqueryUI
 - fontawesome
-- datatables
+- datatables (responsive)
 - select2
 - datepicker
 

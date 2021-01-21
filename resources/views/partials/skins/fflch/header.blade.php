@@ -34,6 +34,9 @@
                 <div>Faculdade de Filosofia, Letras e Ciências Humanas</div>
                 <div class="small">Seção técnica de Informática</div>
             </div>
+            <div class="skin_logo  float-right pr-1 pt-2">
+                <img src="{{ asset('/vendor/laravel-usp-theme/skins/fflch/images/usp.png') }}" alt="Logo da Universidade de São Paulo" />
+            </div>
         </div>
     </div>
 </div>

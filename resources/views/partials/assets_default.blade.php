@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.3.4/dist/select2-bootstrap4.min.css">
     {{-- Select2 --}}
 
+    @parent
     @endsection
 
     @section('javascripts_default')
@@ -60,4 +61,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
     {{-- Mask --}}
 
+    @parent
     @endsection

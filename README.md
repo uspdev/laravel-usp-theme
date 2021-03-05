@@ -28,7 +28,7 @@ O tema possui as seguintes bibliotecas incorporadas:
 - jquery
 - jqueryUI
 - fontawesome
-- datatables (responsive)
+- datatables (responsive), agora com [HTML5 export buttons](https://datatables.net/extensions/buttons/examples/html5/simple.html)
 - select2
 - datepicker
 
@@ -207,6 +207,9 @@ Issue aberta (#42).
 
 
 ## Changelog
+
+04/03/2021
+* Incluido js e css para Datatables HTML5 export buttons
 
 26/10/2020
 * Incluido submenu divider, submenu header e alinhamento direito do submenu (#47)

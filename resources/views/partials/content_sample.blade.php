@@ -15,7 +15,7 @@ na sua infância.<br>
 <div class="row">
     <div class="col-md-8">
         <h2>Datatables</h2>
-        <table class="table table-stripped table-hover table-bordered datatable">
+        <table class="table table-stripped table-hover table-bordered datatable-demo responsive">
             <thead>
                 <tr>
                     <th>Nome</th>
@@ -67,3 +67,17 @@ na sua infância.<br>
 
     </div>
 </div>
+
+@section('javascripts_bottom')
+<script>
+    $(document).ready(function() {
+        $('.datatable-demo').DataTable( {
+            dom: 'fBitp', // https://datatables.net/examples/basic_init/dom.html
+            "buttons": [
+            'excelHtml5'
+            , 'csvHtml5'
+        ]
+        } );
+    } );
+</script>
+@endsection

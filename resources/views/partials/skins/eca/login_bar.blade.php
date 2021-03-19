@@ -4,7 +4,7 @@
     /* #skin_login_bar é o div pai */
     #skin_login_bar {
         display: block;
-        background-color: #273e74;
+        background-color: #005a9b;
         font-size: 16px;
         color: #FFFFFF;
         padding-top: 5px;

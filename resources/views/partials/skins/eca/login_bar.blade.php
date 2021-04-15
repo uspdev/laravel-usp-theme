@@ -31,6 +31,7 @@
     <!-- Vamos colocal o menu nesta posição -->
     </span>
     @auth
+        @if (isset(Auth::user()->role)) <strong>{{ Auth::user()->role }}</strong> - @endif
         {{ Auth::user()->name }} - {{ Auth::user()->email }} |
         @include('laravel-usp-theme::partials.login_bar.logout_link')
     @else

@@ -71,7 +71,7 @@ $right_menu = [
 ];
 
 # dashboard_url renomeado para app_url
-# USPTHEME_SKIN deve ser colocado no .env da aplicação 
+# USP_THEME_SKIN deve ser colocado no .env da aplicação 
 
 return [
     'title' => config('app.name'),

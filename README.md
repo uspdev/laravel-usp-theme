@@ -181,6 +181,10 @@ Para usar um skin, coloque no .env da sua aplicação a varável
 
     USP_THEME_SKIN = nome_do_skin
 
+Você pode definir o skin por meio de variável de sessão
+
+    session()->put('laravel-usp-theme', ['skin' => '<nome_do_skin>']);
+
 Geralmente o nome do skin é a sigla da unidade, mas pode ser qualquer string. Uma unidade pode ter uma skin chamada 'EESC' e outra skin chamada 'EESC65Anos'.
 
 ### Criando um skin

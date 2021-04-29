@@ -15,7 +15,7 @@ class ServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    public function boot(Factory $view, Dispatcher $events, Repository $config) 
+    public function boot(Factory $view, Dispatcher $events, Repository $config)
     {
         $this->loadViews();
         $this->loadTranslations();
@@ -24,7 +24,6 @@ class ServiceProvider extends BaseServiceProvider
 
         // config
         View::share('title', config('laravel-usp-theme.title'));
-        View::share('skin', config('laravel-usp-theme.skin'));
         View::share('menu', config('laravel-usp-theme.menu'));
         View::share('right_menu', config('laravel-usp-theme.right_menu'));
         View::share('app_url', config('laravel-usp-theme.app_url'));
@@ -32,6 +31,13 @@ class ServiceProvider extends BaseServiceProvider
         View::share('login_url', config('laravel-usp-theme.login_url'));
         View::share('logout_url', config('laravel-usp-theme.logout_url'));
         View::share('sistemas', config('laravel-usp-theme.sistemas'));
+
+        # skin na sessão com fallback para o config
+        # https://stackoverflow.com/questions/34577946/how-to-retrieve-session-data-in-service-providers-in-laravel
+        view()->composer('*', function ($view) {
+            $view->with('skin', session('laravel-usp-theme.skin') ?? config('laravel-usp-theme.skin'));
+        });
+
     }
 
     /**
@@ -41,10 +47,11 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        //$this->mergeConfigFrom($this->packagePath('config/laravel-usp-theme-sistemas.php'), 'laravel-usp-theme');
+        $this->mergeConfigFrom($this->packagePath('config/skins.php'), 'laravel-usp-theme');
         $sistemas = require $this->packagePath('config/laravel-usp-theme-sistemas.php');
         $config = $this->app['config']->get('laravel-usp-theme', []);
         $this->app['config']->set('laravel-usp-theme', array_merge($sistemas, $config));
+
     }
 
     private function packagePath($path)

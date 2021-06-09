@@ -146,7 +146,9 @@ Depois disso, em suas views estenda o seu layout básico:
 
 O laravel-usp-theme é uma biblioteca que pode usar configurações no `.env`. Para isso você deve instruir o `.env.example` adequadamente. Note que todas as configurações são opcionais:
 
+    # LARAVEL-USP-THEME
     # https://github.com/uspdev/laravel-usp-theme
+    
     # O laravel-usp-theme permite que seja criado links
     # para outras aplicações da unidade
     #USP_THEME_SISTEMAS_1='{"text":"Pessoas","url":"http://localhost/pessoas"}'

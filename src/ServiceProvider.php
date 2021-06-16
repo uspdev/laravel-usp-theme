@@ -47,11 +47,16 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
+        // configs
         $this->mergeConfigFrom($this->packagePath('config/skins.php'), 'laravel-usp-theme');
         $sistemas = require $this->packagePath('config/laravel-usp-theme-sistemas.php');
         $config = $this->app['config']->get('laravel-usp-theme', []);
         $this->app['config']->set('laravel-usp-theme', array_merge($sistemas, $config));
 
+        // Facade
+        $this->app->bind('uspTheme', function($app) {
+            return new UspTheme();
+        });
     }
 
     private function packagePath($path)

@@ -14,12 +14,15 @@
         "laravel": {
             "providers": [
                 "Uspdev\\UspTheme\\ServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "UspTheme": "Uspdev\\UspTheme\\Facades\\UspTheme"
+            }
         }
     },
     "autoload": {
-        "psr-4" : {
-            "Uspdev\\UspTheme\\" : "src"
+        "psr-4": {
+            "Uspdev\\UspTheme\\": "src"
         }
     }
 }

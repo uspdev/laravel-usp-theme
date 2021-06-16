@@ -76,7 +76,13 @@ $right_menu = [
 
 return [
     'title' => config('app.name'),
+
+    # O skin vai pegar do env
     'skin' => env('USP_THEME_SKIN', 'uspdev'),
+
+    # chave da sessao
+    'session_key' => 'laravel-usp-theme',
+
     'app_url' => config('app.url'),
     'logout_method' => 'POST',
     'logout_url' => 'logout',

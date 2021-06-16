@@ -35,7 +35,7 @@ class ServiceProvider extends BaseServiceProvider
         # skin na sessão com fallback para o config
         # https://stackoverflow.com/questions/34577946/how-to-retrieve-session-data-in-service-providers-in-laravel
         view()->composer('*', function ($view) {
-            $view->with('skin', session('laravel-usp-theme.skin') ?? config('laravel-usp-theme.skin'));
+            $view->with('skin', session(config('laravel-usp-theme.session_key') . '.skin') ?? config('laravel-usp-theme.skin'));
         });
 
     }
@@ -47,11 +47,16 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
+        // configs
         $this->mergeConfigFrom($this->packagePath('config/skins.php'), 'laravel-usp-theme');
         $sistemas = require $this->packagePath('config/laravel-usp-theme-sistemas.php');
         $config = $this->app['config']->get('laravel-usp-theme', []);
         $this->app['config']->set('laravel-usp-theme', array_merge($sistemas, $config));
 
+        // Facade
+        $this->app->bind('uspTheme', function ($app) {
+            return new UspTheme();
+        });
     }
 
     private function packagePath($path)

@@ -106,7 +106,7 @@ Uma vez publicado, você pode querer colocar a pasta public/vendor no .gitignore
 
 ### Estenda o **laravel-usp-theme master** no layout do seu projeto
 
-Edite o seu arquivo `resources/views/layouts/app.blade.php` para estender o laravel-usp-theme. Veja um exemplo:
+Edite ou crie o seu arquivo `resources/views/layouts/app.blade.php` para estender o laravel-usp-theme. Veja um exemplo:
 
 ```php
 @extends('laravel-usp-theme::master')
@@ -132,7 +132,7 @@ Edite o seu arquivo `resources/views/layouts/app.blade.php` para estender o lara
 @endsection
 ```
 
-Depois disso, em suas views estenda o seu layout básico:
+Depois disso, em suas views, estenda o seu layout básico:
 
 ```php
 @extends('layouts.app')
@@ -220,6 +220,33 @@ Os submenus, além dos atributos do menu principal (text, url, can, title), pode
         ],
     ],
 ],
+```
+
+### Menus dinâmicos
+
+É possível adicionar e remover itens do menu dinamicamente. Para isso é necessário criar um item do menu com o nome `key` que será substituído pelo menu dinâmico:
+
+```php
+    [
+        'key' => 'meu menu dinamico',
+    ]
+```
+
+Depois, em seu controller, por exemplo, você deve atribuir o conteúdo desse item. A sintaxe é igual ao utilizado no menu estático e pode conter inclusive submenus:
+
+```php
+    \UspTheme::addKey('meu menu dinamico', [
+        'text' => 'Menu dinâmico',
+        'url' => 'caminho_do_menu',
+    ]);
+```
+
+### Menu ativo
+
+O menu ativo contém a classe `active` do bootstrap e fica destacado em relação aos demais itens de menu. Para indicar o menu ativo utilize o método:
+
+```php
+    \UspTheme::activeUrl('caminho_do_menu');
 ```
 
 ## Skins

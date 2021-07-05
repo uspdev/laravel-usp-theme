@@ -295,6 +295,10 @@ Issue aberta (#42).
 
 ## Changelog
 
+15/06/2021
+
+- Menu dinâmico
+
 04/03/2021
 
 - Incluido js e css para Datatables HTML5 export buttons

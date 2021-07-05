@@ -36,6 +36,14 @@ class UspTheme
     }
 
     /**
+     * Retorna o nome do skin em uso
+     */
+    public function getSkin()
+    {
+        return session()->get(config('laravel-usp-theme.session_key') . '.skin') ?? config('laravel-usp-theme.skin');
+    }
+
+    /**
      * Percorre o menu fazendo vários tratamentos
      */
     public function parseMenu($menu)

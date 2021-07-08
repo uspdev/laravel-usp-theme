@@ -251,6 +251,15 @@ O menu ativo contém a classe `active` do bootstrap e fica destacado em relaçã
 
 O `'caminho_do_menu'` deve corresponder à variável `url` do item.
 
+### Menu dinâmico global
+
+Se o menu dinâmico vai ser aplicado em todas as views, é possível utilizar [**View Composers**](https://laravel.com/docs/8.x/views#view-composers). Passo a passo:
+
+* em `app/Providers` crie o arquivo ViewServiceProvider.php com o conteúdo indocado na documentação;
+* coloque as chamadas ao menu dinâmico em `boot()`;
+* em `config/app.php`->`providers` registre o novo arquivo;
+* 
+
 ## Skins
 
 A partir da versão 2, o laravel-usp-theme pode ser personalizado por meio de skins. O skin permite personalizar a aparência do sistema.

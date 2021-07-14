@@ -1,3 +1,11 @@
+// default datatables config
+$.extend( $.fn.dataTable.defaults, {
+    responsive: true,
+    language: {
+        url: 'vendor/laravel-usp-theme/datatables/Portuguese-Brasil.json',
+    }
+});
+
 $(document).ready(function() {
 
     //JqueryUI:Datepicker
@@ -14,11 +22,7 @@ $(document).ready(function() {
 
     //DataTables
     $('.dataTable, .datatable').DataTable({
-        language: {
-                url: 'vendor/laravel-usp-theme/datatables/Portuguese-Brasil.json',
-                // url: 'https://cdn.datatables.net/plug-ins/1.10.23/i18n/Portuguese-Brasil.json'
-        }
-        , paging: true
+        paging: true
         , lengthChange: true
         , searching: true
         , ordering: true

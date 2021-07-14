@@ -15,7 +15,8 @@ $(document).ready(function() {
     //DataTables
     $('.dataTable, .datatable').DataTable({
         language: {
-            url: 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json'
+                url: 'vendor/laravel-usp-theme/datatables/Portuguese-Brasil.json',
+                // url: 'https://cdn.datatables.net/plug-ins/1.10.23/i18n/Portuguese-Brasil.json'
         }
         , paging: true
         , lengthChange: true

@@ -73,10 +73,13 @@ na sua infância.<br>
     $(document).ready(function() {
         $('.datatable-demo').DataTable( {
             dom: 'fBitp', // https://datatables.net/examples/basic_init/dom.html
-            "buttons": [
-            'excelHtml5'
-            , 'csvHtml5'
-        ]
+            "buttons": ['excelHtml5', 'csvHtml5'], // buttons plugin
+            language: {
+                // 20210713210228
+                // https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json
+                url: 'vendor/laravel-usp-theme/datatables/Portuguese-Brasil.json',
+            },
+            responsive: true, // responsive plugin
         } );
     } );
 </script>

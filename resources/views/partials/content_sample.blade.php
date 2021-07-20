@@ -73,10 +73,7 @@ na sua infância.<br>
     $(document).ready(function() {
         $('.datatable-demo').DataTable( {
             dom: 'fBitp', // https://datatables.net/examples/basic_init/dom.html
-            "buttons": [
-            'excelHtml5'
-            , 'csvHtml5'
-        ]
+            "buttons": ['excelHtml5', 'csvHtml5'], // buttons plugin
         } );
     } );
 </script>

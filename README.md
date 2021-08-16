@@ -222,34 +222,52 @@ Os submenus, além dos atributos do menu principal (text, url, can, title), pode
 ],
 ```
 
-### Menus dinâmicos
+## Menus dinâmicos
 
 É possível adicionar e remover itens do menu dinamicamente. Para isso é necessário criar um item do menu com o nome `key` que será substituído pelo menu dinâmico:
 
 ```php
-    [
-        'key' => 'meu menu dinamico',
-    ]
+[
+    'key' => 'meu menu dinamico',
+]
 ```
 
 Depois, em seu controller, por exemplo, você deve atribuir o conteúdo desse item. A sintaxe é igual ao utilizado no menu estático e pode conter inclusive submenus:
 
 ```php
-    \UspTheme::addMenu('meu menu dinamico', [
-        'text' => 'Menu dinâmico',
-        'url' => 'caminho_do_menu',
-    ]);
+\UspTheme::addMenu('meu menu dinamico', [
+    'text' => 'Menu dinâmico',
+    'url' => 'caminho_do_menu',
+]);
 ```
 
-### Menu ativo
+### Eventos de menu dinâmico
 
-O menu ativo contém a classe `active` do bootstrap e fica destacado em relação aos demais itens de menu. Para indicar o menu ativo utilize o método:
+A biblioteca emite um evento ao montar o menu dinâmico. O evento é similar ao `\UspTheme::addMenu()` no sentido de substituir as entradas com `key`. É apropriado para ser escutado por outras bibliotecas. Para isso, no `EventServiceProvider` coloque:
 
 ```php
-    \UspTheme::activeUrl('caminho_do_menu');
+use Illuminate\Support\Facades\Event;
+use Uspdev\UspTheme\Events\UspThemeParseKey;
+...
+
+public function boot()
+{
+    ...
+
+    Event::listen(function (UspThemeParseKey $event) {
+        if ($event->item['key'] == 'chave-definida-no-config') {
+            ....
+            $event->item = [
+                'text' => 'descreva o ítem aqui',
+                'url' => '',
+            ];
+        }
+        return $event->item;
+    };
+}
 ```
 
-O `'caminho_do_menu'` deve corresponder à variável `url` do item.
+Ele deve retornar `$event->item` sem alterações ou substituir o conteúdo pelo menu desejado.
 
 ### Menu dinâmico global
 
@@ -258,7 +276,17 @@ Se o menu dinâmico vai ser aplicado em todas as views, é possível utilizar [*
 * em `app/Providers` crie o arquivo ViewServiceProvider.php com o conteúdo indocado na documentação;
 * coloque as chamadas ao menu dinâmico em `boot()`;
 * em `config/app.php`->`providers` registre o novo arquivo;
-* 
+
+
+## Menu ativo
+
+O menu ativo contém a classe `active` do bootstrap e fica destacado em relação aos demais itens de menu. Para indicar o menu ativo utilize o método:
+
+```php
+\UspTheme::activeUrl('caminho_do_menu');
+```
+
+O `'caminho_do_menu'` deve corresponder à variável `url` do item.
 
 ## Skins
 

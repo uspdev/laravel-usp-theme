@@ -2,6 +2,8 @@
 
 namespace Uspdev\UspTheme;
 
+use Uspdev\UspTheme\Events\UspThemeParseKey;
+
 class UspTheme
 {
     /**
@@ -80,6 +82,13 @@ class UspTheme
      */
     protected function parseKey($item)
     {
+        // primeiro verifica por evento. Se não processar, retorna $item intacto
+        // se sim, substitui pelo conteúdo correspondente.
+        if (isset($item['key'])) {
+            $item = event(new UspThemeParseKey($item))[0];
+        }
+
+        // depois verifica por sessão
         if (isset($item['key'])) {
             $s = session(config('laravel-usp-theme.session_key') . '.menu.' . $item['key']);
             if (empty($s)) {
@@ -87,6 +96,7 @@ class UspTheme
             }
             $item = array_merge($item, $s);
         }
+
         return $item;
     }
 

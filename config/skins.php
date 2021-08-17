@@ -1,8 +1,9 @@
 <?php
 # lista de skins disponíveis no theme
 
-chdir(__DIR__ . '/../resources/views/partials/skins');
-$skins = glob('*', GLOB_ONLYDIR);
+$skins = array_map('basename', glob(__DIR__ . '/../resources/views/partials/skins/*', GLOB_ONLYDIR));
+
 return [
     'available-skins' => $skins,
 ];
+

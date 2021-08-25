@@ -102,7 +102,7 @@ Após a inserção da linha mencionada, executar o comando:
 
     composer dump -o
 
-Uma vez publicado, você pode querer colocar a pasta public/vendor no .gitignore.
+Uma vez publicado, você pode querer colocar a pasta `public/vendor` no `.gitignore`.
 
 ### Estenda o **laravel-usp-theme master** no layout do seu projeto
 

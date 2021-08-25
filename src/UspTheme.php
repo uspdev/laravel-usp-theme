@@ -85,7 +85,7 @@ class UspTheme
         // primeiro verifica por evento. Se não processar, retorna $item intacto
         // se sim, substitui pelo conteúdo correspondente.
         if (isset($item['key'])) {
-            $item = event(new UspThemeParseKey($item))[0];
+            $item = event(new UspThemeParseKey($item))[0] ?? [];
         }
 
         // depois verifica por sessão

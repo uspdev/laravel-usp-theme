@@ -51,20 +51,30 @@ class UspTheme
     public function parseMenu($menu)
     {
         $out = [];
-        foreach ($menu as $k => $item) {
+        foreach ($menu as $item) {
 
-            $item = SELF::parseKey($item); // pode retornar null, pode retornar multi
-            $item = SELF::evaluateCan($item); // pode retornar null
+            if (!$item = SELF::parseKey($item)) { // pode retornar array vazio, registro (array simples) ou coleção (array de arrays)
+                // se vazio vamos para o próximo item
+                continue;
+            }
 
-            if ($item) {
+            if (\has_string_keys($item)) { // registro (array simples)
+                $item = SELF::evaluateCan($item); // pode retornar null
                 $item = SELF::submenuAddRight($item);
                 $item = SELF::addActiveClass($item);
-                // $item = SELF::parseTitleTarget($item);
-
-                array_push($out, $item);
+                $item = SELF::parseTitleTarget($item);
+                $out[] = $item;
+            } else { // coleção, vamos iterar sobre cada item
+                $itens = $item;
+                foreach ($itens as $item) {
+                    $item = SELF::evaluateCan($item); // pode retornar null
+                    $item = SELF::submenuAddRight($item);
+                    $item = SELF::addActiveClass($item);
+                    $item = SELF::parseTitleTarget($item);
+                    $out[] = $item;
+                }
             }
         }
-        dd($out);
         return $out;
     }
 
@@ -80,17 +90,9 @@ class UspTheme
             $item = event(new UspThemeParseKey($item))[0] ?? $item;
         }
 
-        // depois verifica por sessão
+        // depois verifica por sessão.
         if (isset($item['key'])) {
-            $s = session(config('laravel-usp-theme.session_key') . '.menu.' . $item['key']);
-            if (empty($s)) {
-                return false;
-            }
-            if (!\has_string_keys($s)) {
-                $item = [$s];
-            } else {
-                $item = $s;
-            }
+            $item = session(config('laravel-usp-theme.session_key') . '.menu.' . $item['key'], []);
         }
 
         return $item;

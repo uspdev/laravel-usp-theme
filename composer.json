@@ -23,6 +23,9 @@
     "autoload": {
         "psr-4": {
             "Uspdev\\UspTheme\\": "src"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     }
 }

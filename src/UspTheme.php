@@ -59,7 +59,9 @@ class UspTheme
             }
 
             if (\has_string_keys($item)) { // registro (array simples)
-                $item = SELF::evaluateCan($item); // pode retornar null
+                if (!$item = SELF::evaluateCan($item)) { // pode retornar null
+                    continue;
+                };
                 $item = SELF::submenuAddRight($item);
                 $item = SELF::addActiveClass($item);
                 $item = SELF::parseTitleTarget($item);
@@ -67,7 +69,9 @@ class UspTheme
             } else { // coleção, vamos iterar sobre cada item
                 $itens = $item;
                 foreach ($itens as $item) {
-                    $item = SELF::evaluateCan($item); // pode retornar null
+                    if (!$item = SELF::evaluateCan($item)) { // pode retornar null
+                        continue;
+                    };
                     $item = SELF::submenuAddRight($item);
                     $item = SELF::addActiveClass($item);
                     $item = SELF::parseTitleTarget($item);

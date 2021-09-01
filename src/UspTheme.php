@@ -50,31 +50,36 @@ class UspTheme
      */
     public function parseMenu($menu)
     {
-        foreach ($menu as $k => &$item) {
-            if (!$item = SELF::parseKey($item)) {
-                unset($menu[$k]);
-                continue;
-            }
-            if (!$item = SELF::evaluateCan($item)) {
-                unset($menu[$k]);
-                continue;
-            }
-            $item = SELF::submenuAddRight($item);
-            $item = SELF::addActiveClass($item);
-            $item = SELF::parseTitleTarget($item);
-        }
-        return $menu;
-    }
+        $out = [];
+        foreach ($menu as $item) {
 
-    # alinhamento do submenu opcional à direita
-    protected function submenuAddRight($item)
-    {
-        if (isset($item['submenu']) && isset($item['align']) && $item['align'] == 'right') {
-            $item['align'] = 'dropdown-menu-right';
-        } else {
-            $item['align'] = '';
+            if (!$item = SELF::parseKey($item)) { // pode retornar array vazio, registro (array simples) ou coleção (array de arrays)
+                // se vazio vamos para o próximo item
+                continue;
+            }
+
+            if (\has_string_keys($item)) { // registro (array simples)
+                if (!$item = SELF::evaluateCan($item)) { // pode retornar null
+                    continue;
+                };
+                $item = SELF::submenuAddRight($item);
+                $item = SELF::addActiveClass($item);
+                $item = SELF::parseTitleTarget($item);
+                $out[] = $item;
+            } else { // coleção, vamos iterar sobre cada item
+                $itens = $item;
+                foreach ($itens as $item) {
+                    if (!$item = SELF::evaluateCan($item)) { // pode retornar null
+                        continue;
+                    };
+                    $item = SELF::submenuAddRight($item);
+                    $item = SELF::addActiveClass($item);
+                    $item = SELF::parseTitleTarget($item);
+                    $out[] = $item;
+                }
+            }
         }
-        return $item;
+        return $out;
     }
 
     /**
@@ -84,32 +89,16 @@ class UspTheme
     {
         // primeiro verifica por evento. Se não processar, retorna $item intacto
         // se sim, substitui pelo conteúdo correspondente.
+        // processa somente a 1a resposta ao evento
         if (isset($item['key'])) {
-            $item = event(new UspThemeParseKey($item))[0] ?? [];
+            $item = event(new UspThemeParseKey($item))[0] ?? $item;
         }
 
-        // depois verifica por sessão
+        // depois verifica por sessão.
         if (isset($item['key'])) {
-            $s = session(config('laravel-usp-theme.session_key') . '.menu.' . $item['key']);
-            if (empty($s)) {
-                return false;
-            }
-            $item = array_merge($item, $s);
+            $item = session(config('laravel-usp-theme.session_key') . '.menu.' . $item['key'], []);
         }
 
-        return $item;
-    }
-
-    /**
-     * Insere a classe 'active' no item quando setado em activeUrl()
-     */
-    protected function addActiveClass($item)
-    {
-        if (isset($item['url']) && session(config('laravel-usp-theme.session_key') . '.active_url') == $item['url']) {
-            $item['class'] = 'active';
-        } else {
-            $item['class'] = '';
-        }
         return $item;
     }
 
@@ -126,6 +115,32 @@ class UspTheme
             return $item;
         }
         return false;
+    }
+
+    /**
+     * Alinhamento do submenu opcional à direita
+     */
+    protected function submenuAddRight($item)
+    {
+        if (isset($item['submenu']) && isset($item['align']) && $item['align'] == 'right') {
+            $item['align'] = 'dropdown-menu-right';
+        } else {
+            $item['align'] = '';
+        }
+        return $item;
+    }
+
+    /**
+     * Insere a classe 'active' no item quando setado em activeUrl()
+     */
+    protected function addActiveClass($item)
+    {
+        if (isset($item['url']) && session(config('laravel-usp-theme.session_key') . '.active_url') == $item['url']) {
+            $item['class'] = 'active';
+        } else {
+            $item['class'] = '';
+        }
+        return $item;
     }
 
     /**

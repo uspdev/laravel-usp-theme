@@ -30,7 +30,6 @@ class ServiceProvider extends BaseServiceProvider
         View::share('logout_method', config('laravel-usp-theme.logout_method'));
         View::share('login_url', config('laravel-usp-theme.login_url'));
         View::share('logout_url', config('laravel-usp-theme.logout_url'));
-        View::share('sistemas', config('laravel-usp-theme.sistemas'));
 
         # skin na sessão com fallback para o config
         # https://stackoverflow.com/questions/34577946/how-to-retrieve-session-data-in-service-providers-in-laravel

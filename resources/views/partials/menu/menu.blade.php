@@ -2,12 +2,12 @@
 
 <nav class="navbar navbar-expand-sm navbar-light bg-light mb-3 py-0 border-bottom border-top border-gray">
     
-    @if ($sistemas) {{-- menu de sistemas --}}
+    @if (config('laravel-usp-theme.sistemas')) {{-- menu de sistemas --}}
     <a class="navbar-brand dropdown-toggle" href="#" data-toggle="dropdown" title="Outros sistemas">
         <i class="fas fa-globe"></i>
     </a>
     <div class="dropdown-menu" role="menu">
-        @foreach ($sistemas as $sistema)
+        @foreach (config('laravel-usp-theme.sistemas') as $sistema)
             <a class="dropdown-item" href="{{$sistema['url']}}" target="_{{$sistema['text']}}">
                 {{ $sistema['text'] }}
             </a>

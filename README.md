@@ -120,7 +120,7 @@ Edite ou crie o seu arquivo `resources/views/layouts/app.blade.php` para estende
 </style>
 @endsection
 
-@section('footer')
+@section('skin_footer')
     Seu código
 @endsection
 

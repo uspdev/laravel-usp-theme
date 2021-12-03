@@ -31,7 +31,7 @@ Para aplicar um menu dinâmico em todas as rotas a melhor forma é utilizar [**V
 
 Passo a passo:
 
-* em `app/Providers` crie o arquivo ViewServiceProvider.php com o conteúdo indocado na documentação;
+* em `app/Providers` crie o arquivo ViewServiceProvider.php com o conteúdo indicado na [documentação](https://laravel.com/docs/8.x/views#view-composers);
 * coloque as chamadas ao menu dinâmico no método `boot()` da mesma forma que é feito no controller;
 * em `config/app.php`->`providers` registre o novo arquivo;
 

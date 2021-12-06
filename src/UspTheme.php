@@ -52,40 +52,58 @@ class UspTheme
     {
         $out = [];
         foreach ($menu as $item) {
-
-            if (!$item = SELF::parseKey($item)) { // pode retornar array vazio, registro (array simples) ou coleção (array de arrays)
-                // se vazio vamos para o próximo item
-                continue;
-            }
-
-            if (\has_string_keys($item)) { // registro (array simples)
-                if (!$item = SELF::evaluateCan($item)) { // pode retornar null
-                    continue;
-                };
-                $item = SELF::submenuAddRight($item);
-                $item = SELF::addActiveClass($item);
-                $item = SELF::parseTitleTarget($item);
-                $out[] = $item;
-            } else { // coleção, vamos iterar sobre cada item
-                $itens = $item;
-                foreach ($itens as $item) {
-                    if (!$item = SELF::evaluateCan($item)) { // pode retornar null
-                        continue;
-                    };
-                    $item = SELF::submenuAddRight($item);
-                    $item = SELF::addActiveClass($item);
-                    $item = SELF::parseTitleTarget($item);
-                    $out[] = $item;
-                }
+            foreach (SELF::parseKey($item) as $item) {
+                $item = SELF::parseSubmenu($item);
+                $item = SELF::parseItem($item);
+                if ($item) {$out[] = $item;} // eliminando se false
             }
         }
+        // dd($out, session(config('laravel-usp-theme.session_key') . '.active_url'));
         return $out;
+    }
+
+    /**
+     * Trata o submenu
+     */
+    protected static function parseSubmenu($item)
+    {
+        if (isset($item['submenu'])) {
+            // vamos tratar cada item do submenu e eliminar os falses
+            $item['submenu'] = array_filter(array_map('SELF::parseItem', $item['submenu']));
+
+            # adiciona a class active no menu pai
+            if (in_array('active', array_column($item['submenu'], 'class'))) {
+                $item['class'] = 'active';
+            }
+        }
+
+        # alinhamento do submenu opcional à direita
+        if (isset($item['align']) && $item['align'] == 'right') {
+            $item['align'] = 'dropdown-menu-right';
+        } else {
+            $item['align'] = '';
+        }
+
+        return $item;
+    }
+
+    /**
+     * Trata as coisas de um item
+     */
+    protected static function parseItem($item)
+    {
+        if ($item = SELF::evaluateCan($item)) { // pode retornar false
+            $item = SELF::addActiveClass($item);
+            $item = SELF::parseTitleTarget($item);
+        };
+
+        return $item;
     }
 
     /**
      * Mescla o menu dinâmico usando key. Se não houver menu para inserir, o item será removido.
      */
-    protected function parseKey($item)
+    protected static function parseKey($item)
     {
         // primeiro verifica por evento. Se não processar, retorna $item intacto
         // se sim, substitui pelo conteúdo correspondente.
@@ -99,46 +117,37 @@ class UspTheme
             $item = session(config('laravel-usp-theme.session_key') . '.menu.' . $item['key'], []);
         }
 
-        return $item;
+        // vamos remover o item se não houver menu dinamico correspondente
+        if (isset($item['key'])) {
+            return [];
+        }
+
+        // vamos retornar sempre na forma de lista
+        return has_string_keys($item) ? [0 => $item] : $item;
     }
 
     /**
      * Remove o item do menu se o gate não permitir
      */
-    protected function evaluateCan($item)
+    protected static function evaluateCan($item)
     {
+        // sem can ou se vazio é livre
         if (empty($item['can'])) {
-            // sem can ou se vazio é livre
-            return $item;
-        } else if (\Gate::check($item['can'])) {
-            // com can vamos testar o gate
             return $item;
         }
-        return false;
-    }
 
-    /**
-     * Alinhamento do submenu opcional à direita
-     */
-    protected function submenuAddRight($item)
-    {
-        if (isset($item['submenu']) && isset($item['align']) && $item['align'] == 'right') {
-            $item['align'] = 'dropdown-menu-right';
-        } else {
-            $item['align'] = '';
-        }
-        return $item;
+        // com can vamos testar o gate
+        return \Gate::check($item['can']) ? $item : false;
     }
 
     /**
      * Insere a classe 'active' no item quando setado em activeUrl()
      */
-    protected function addActiveClass($item)
+    protected static function addActiveClass($item)
     {
+        $item['class'] = !isset($item['class']) ? '' : $item['class'];
         if (isset($item['url']) && session(config('laravel-usp-theme.session_key') . '.active_url') == $item['url']) {
             $item['class'] = 'active';
-        } else {
-            $item['class'] = '';
         }
         return $item;
     }
@@ -146,14 +155,14 @@ class UspTheme
     /**
      * Insere valores default em title e target caso não estejam presentes
      */
-    protected function parseTitleTarget($item)
+    protected static function parseTitleTarget($item)
     {
         if (!isset($item['title'])) {
-            $item['title'] = strip_tags($item['text']);
+            $item['title'] = isset($item['text']) ? strip_tags($item['text']) : '';
         }
-        if (!isset($item['target'])) {
-            $item['target'] = '';
-        }
+
+        $item['target'] = isset($item['target']) ? $item['target'] : '';
+
         return $item;
     }
 }

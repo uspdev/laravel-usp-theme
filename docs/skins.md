@@ -1,7 +1,6 @@
-# Pacote de tema do Laravel para projetos USPdev
+# Tema do Laravel para projetos USPdev
 
-
-## Skins
+## [Início](../README.md) > Skins
 
 A partir da versão 2, o laravel-usp-theme pode ser personalizado por meio de skins. O skin permite personalizar a aparência do sistema.
 

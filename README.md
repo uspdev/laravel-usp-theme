@@ -52,6 +52,7 @@ Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras
 * [Menu ativo](docs/menu-ativo.md)
 * [Link para outros sistemas](docs/outros-sistemas.md)
 * [Menu dinâmico](docs/menu-dinamico.md)
+* [Skins](docs/skins.md)
 * [Issues](docs/issues.md)
 
 ## Changelog

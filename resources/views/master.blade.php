@@ -26,19 +26,19 @@
 </head>
 
 <body>
-    <div id="skin_header"> {{-- Cria a barra de topo, em geral com o logo da unidade --}}
+    <div id="skin_header" class="{{$container}}"> {{-- Cria a barra de topo, em geral com o logo da unidade --}}
         @yield('skin_header')
     </div>
 
-    <div id="skin_login_bar"> {{-- Cria a barra de login/logout --}}
+    <div id="skin_login_bar" class="{{$container}}"> {{-- Cria a barra de login/logout --}}
         @yield('skin_login_bar')
     </div>
 
-    <div id="menu"> {{-- Cria a barra de menus da aplicação --}}
+    <div id="menu" class="{{$container}}"> {{-- Cria a barra de menus da aplicação --}}
         @yield('menu')
     </div>
 
-    <div class="container-fluid">
+    <div class="{{$container}}">
         <div class="row">
             <div id="content" class="col-md-12">
                 @yield('flash')
@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div id="skin_footer"> {{-- Cria a barra do rodapé --}}
+    <div id="skin_footer" class="{{$container}}"> {{-- Cria a barra do rodapé --}}
         @yield('skin_footer')
     </div>
 

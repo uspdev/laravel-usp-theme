@@ -1,0 +1,134 @@
+/**container */
+.container.container-fflch{
+    padding: 0;
+}
+
+.fflch-logodefault img{
+    max-width: 100%;
+    height: auto;
+}
+
+/*----------LOGOS E NOMES-----------*/
+@media (min-width:768px){
+    /*LOGODEFAULT*/
+    .fflch-logodefault{
+    display:block;
+    position:relative;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+    }
+    
+    /*CONTAINER DE LOGOS E NOMES*/
+    .fflch-firstsecondthird {
+    display: grid;
+    grid-template-columns: 157px auto 95px;
+    width: 100%;
+    }
+    
+    /*LOGO FFLCH*/
+    .fflch-first{
+    width: 157px;
+    height:51px;
+    min-width: 84px;
+
+    }
+    
+    /*NOME E SLOGAN*/
+    .fflch-second{
+    padding-left: 10px;
+    padding-right: 10px;
+
+    }
+    /*LOGO USP*/
+    .fflch-third {
+    width: 95px; 
+    height:51px;
+    }
+
+    .fflch-logo-usp-img {
+    padding-top: 15px;
+    }
+    
+    
+    /*CONTEÙDO DO SECOND (SITE E SLOGAN)*/
+    /*FONTE*/
+    .fflch-second a{
+    Font-family: "Arial Narrow", "Arial" , Sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgb(39, 62, 116);
+    }
+    
+    /*SLOGAN*/
+    .fflch-slogan {
+    font-size: 13pt;
+    line-height: 1em;
+    padding-left: 2px;
+    margin-bottom: -1px;
+    }
+    
+    /*NOME DO SITE*/
+    .fflch-site-name {
+    font-size: 30pt;
+    line-height: 1em;
+    margin-bottom: -6px;
+    }
+
+
+}
+
+/*--------------------------(-)767px------------------------*/
+@media (max-width:767px){
+    /*----------LOGOS E NOMES-----------*/
+
+    /*LOGODEFAULT*/
+    .fflch-logodefault{
+        display:block;
+        position:relative;
+        padding-bottom: 5%;
+        padding-top: 5%;
+    }
+
+    /*CONTAINER DE LOGOS E NOMES*/
+    .fflch-firstsecondthird {
+        display: flex;
+        flex-wrap: nowrap;    
+        width: 100%;    
+        padding-left: 10px;    
+        padding-right: 10px; 
+    }
+
+    /*LOGO FFLCH*/
+    .fflch-first{
+        width: 84px;
+        min-width: 84px;
+    }
+
+    /*NOME E SLOGAN*/
+    .fflch-second{
+        padding-left: 6px;
+    }
+    /*LOGO USP*/
+    .fflch-third {
+        display:none;
+    }
+
+
+    /*CONTEÙDO DO SECOND (SITE E SLOGAN)*/
+    /*FONTE*/
+    .fflch-second a{
+        Font-family: "Arial Narrow", "Arial" , Sans-serif;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: rgb(39, 62, 116);
+    }
+
+    /*SLOGAN E NOME DO SITE*/
+    .fflch-slogan, .fflch-site-name {
+        font-size: 15px;
+        line-height: 13px;
+    }
+    
+}
+ 

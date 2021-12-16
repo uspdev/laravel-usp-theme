@@ -4,20 +4,21 @@
     /* #skin_login_bar é o div pai */
     #skin_login_bar {
         display: block;
-        background-color: #273e74;
         font-size: 16px;
-        color: #FFFFFF;
+        color: #273e74;
         padding-top: 5px;
         margin-bottom: 5px;
     }
 
     /* .login_logout_link formata os links correspondentes que estão nos includes */
     #skin_login_bar .login_logout_link {
-        color: #FFFFFF !important;
+        color: #273e74 ;
         text-decoration: none !important;
         font-weight: bold;
         padding-left: 5px;
-        padding-right: 10px;
+    }
+    #skin_login_bar  svg{
+        color: #273e74 ;
     }
 
 </style>
@@ -25,7 +26,7 @@
 
 @section('skin_login_bar')
 
-<div class="container">
+<div class="container p-0">
     <div class="text-right">
         <span style="float:left">
         <!-- Vamos colocal o menu nesta posição -->

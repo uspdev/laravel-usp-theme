@@ -1,4 +1,5 @@
 
+
 <div class="nav-item">
     <a class="nav-link dropdown-toggle {{ $item['class'] }}" href="#" id="navbarDropdown{{ preg_replace('/[^\w\d]+/', '', $item['text']) }}"
         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

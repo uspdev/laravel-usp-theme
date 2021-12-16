@@ -5,6 +5,7 @@
 @include('laravel-usp-theme::partials.skin_header_loader')
 @include('laravel-usp-theme::partials.skin_login_bar_loader')
 @include('laravel-usp-theme::partials.skin_footer_loader')
+@include('laravel-usp-theme::partials.skin_menu_loader')
 
 @include('laravel-usp-theme::partials.menu.menu')
 

@@ -1,7 +1,7 @@
 @section('skin_styles')
     @parent {{-- devemos incluir o conteúdo existente --}} 
     <!-- TODO remover a tag style e deixar apena so link:css-->
-    <link rel="stylesheet" property="stylesheet"  href="{{ asset('/vendor/laravel-usp-theme/skins/fflch/css/header.css')}}">
+    <link rel="stylesheet" property="stylesheet"  href="{{ asset('/vendor/laravel-usp-theme/skins/fflch/css/style.css')}}">
     <style>
         /**container */
         .container.container-fflch{
@@ -136,10 +136,117 @@
             }
         
         }
+
+
+        /* #skin_login_bar é o div pai */
+        #skin_login_bar {
+            display: block;
+            font-size: 16px;
+            color: #273e74;
+            padding-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* .login_logout_link formata os links correspondentes que estão nos includes */
+        #skin_login_bar .login_logout_link {
+            color: #273e74 ;
+            text-decoration: none !important;
+            font-weight: bold;
+            padding-left: 5px;
+        }
+        #skin_login_bar  svg{
+            color: #273e74 ;
+        }
+        @media (max-width:767px){
+            #skin_login_bar {
+                padding: 0 10px;
+            }
+            #skin_login_bar {
+                font-size: 14px;
+            }
+        }
+
+        /** MENU */
+        #menu{
+            background-color: #273e74;
+            color: #fff;
+        }
+        #menu .navbar .navbar-brand{
+            margin-right: 0;
+        }
+        #menu .navbar a{
+            color: #fff;
+            text-transform: uppercase;
+            font-family: "Roboto", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 28px;  
+            padding: 10px 15px;
+            border-right-color: rgb(255, 255, 255);
+            border-right-style: solid;
+            border-right-width: 1px;
+        }
+        .dropdown, .dropdown .dropdown-menu, .dropdown .dropdown-item, .dropdown a{
+            background-color: #273e74;
+            color: #fff;
+        }
+        #menu .navbar .dropdown-menu{
+            margin-top: 0;
+            border-radius: 0;
+            border: 0;
+        }
+        #menu .navbar .dropdown a{
+            border-bottom: 1px dotted #003954;
+            border-right: 0;
+        }
+        #menu .dropdown-toggle::after {
+        transform: rotate(-90deg);
+        }
+        #menu .dropdown-header{
+            padding: 10px 10px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        /*--------------------------(-)767px------------------------*/
+        @media (max-width:767px){
+            #menu .navbar a{
+                border-right:none;
+            }    
+            .navbar .navbar-toggler{
+                border-color: #fff;
+                padding: 0 6px;
+                margin: 6px 12px;
+            }
+            .navbar .navbar-toggler .navbar-toggler-icon{
+                filter: contrast(1) saturate(1) invert(1);
+            }
+            #menu .dropdown-menu {
+                box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+                margin-right: 8px;
+            }
+            #menu .navbar a{
+                font-size: 12px;
+            }
+
+        }
+
+
+        /** FOOTER */
+        .footer-fflch{
+            background-color: #273e74;
+            color: #fff;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .footer-fflch a{
+            color: #fff;
+            font-size: 14px;
+        }
  
     </style>
 
-@endsection
+@endsection 
 
 @section('skin_header')
     <!-- TODO container vai ocultar em mobile para ganhar espaço (d-none d-sm-block) -->

@@ -3,7 +3,7 @@
 <footer>
     <div class="text-center py-4">
         <hr />
-        <a href="http://www3.eca.usp.br/" target="_blank">© {{ now()->year }} ECA</a>
+        <a href="http://www.eca.usp.br/" target="_blank">© {{ now()->year }} ECA</a>
     </div>
 </footer>
 @endsection

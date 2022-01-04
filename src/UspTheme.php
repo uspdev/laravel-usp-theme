@@ -3,6 +3,7 @@
 namespace Uspdev\UspTheme;
 
 use Uspdev\UspTheme\Events\UspThemeParseKey;
+include  "helpers.php"; //a função has_string_keys dentro de heplers não está sendo encontrada
 
 class UspTheme
 {

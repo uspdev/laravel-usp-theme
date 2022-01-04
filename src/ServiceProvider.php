@@ -24,6 +24,7 @@ class ServiceProvider extends BaseServiceProvider
 
         // config
         View::share('title', config('laravel-usp-theme.title'));
+        View::share('container', config('laravel-usp-theme.container') ?? 'container-fluid');
         View::share('menu', config('laravel-usp-theme.menu'));
         View::share('right_menu', config('laravel-usp-theme.right_menu'));
         View::share('app_url', config('laravel-usp-theme.app_url'));

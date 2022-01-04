@@ -14,10 +14,6 @@
     </div>
     @endif
 
-    <a class="navbar-brand font-weight-bold" href="{{ $app_url }}">
-        @section('sitename') {{ $title }} @show
-    </a>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
     </button>

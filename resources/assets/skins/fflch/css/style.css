@@ -55,7 +55,7 @@
     /*FONTE*/
     .fflch-second a{
     Font-family: "Arial Narrow", "Arial" , Sans-serif;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     text-decoration: none;
     color: rgb(39, 62, 116);
     }

@@ -5,7 +5,11 @@
 @include('laravel-usp-theme::partials.skin_header_loader')
 @include('laravel-usp-theme::partials.skin_login_bar_loader')
 @include('laravel-usp-theme::partials.skin_footer_loader')
-@include('laravel-usp-theme::partials.skin_menu_loader')
+
+{{-- Por enquanto testando novo paradigma na FFLCH --}}
+@if(env('USP_THEME_SKIN') == 'fflch')
+  @include('laravel-usp-theme::partials.skin_menu_loader')
+@endif
 
 @include('laravel-usp-theme::partials.menu.menu')
 

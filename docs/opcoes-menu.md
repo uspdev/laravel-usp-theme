@@ -27,7 +27,7 @@ Há dois menus principais, um alinhado à esquerda (`$menu`) e outro alinhado à
 Cada item do menu deve conter os seguintes atributos:
 
 - **text**: conteúdo a ser exibido;
-- **url**: url que será direcionado ao clicar. O caminho é relativo à raiz da aplicação mas pode-se colocar um caminho absoluto também;
+- **url**: url que será direcionado ao clicar. O caminho é relativo à raiz da aplicação mas pode-se colocar um caminho absoluto também. Se não for adicionado **url**, ao invés de criar um link o menu será criado como texto normal com \<span>; 
 - **can**: irá exibir o item para o gate especificado. Se inexistente ou vazio, o item é acessivel por todos. De fato não é obrigatório mas você provavelmente irá utilizar.
 
 ```php

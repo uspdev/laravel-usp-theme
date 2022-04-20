@@ -34,8 +34,6 @@
                 <div>{{ config('app.name')}} </div>
                 <div class="small">Instituto de Geociências</div>
             </div>
-<!--            <div class="skin_logo  float-right pr-1 pt-2">
-                <img src="{{ asset('/vendor/laravel-usp-theme/skins/igc/images/usp.png') }}" alt="Logo da Universidade de São Paulo" />-->
             </div>
         </div>
     </div>

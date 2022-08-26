@@ -3,7 +3,6 @@
 namespace Uspdev\UspTheme;
 
 use Uspdev\UspTheme\Events\UspThemeParseKey;
-include  "helpers.php"; //a função has_string_keys dentro de heplers não está sendo encontrada
 
 class UspTheme
 {
@@ -106,11 +105,14 @@ class UspTheme
      */
     protected static function parseKey($item)
     {
-        // primeiro verifica por evento. Se não processar, retorna $item intacto
-        // se sim, substitui pelo conteúdo correspondente.
-        // processa somente a 1a resposta ao evento
+        // primeiro verifica por evento.
+        // Vamos retornar a 1a resposta do evento que tenha conteúdo
         if (isset($item['key'])) {
-            $item = event(new UspThemeParseKey($item))[0] ?? $item;
+            foreach (event(new UspThemeParseKey($item)) as $eventItem) {
+                if (!isset($eventItem['key'])) {
+                    $item = $eventItem;
+                }
+            }
         }
 
         // depois verifica por sessão.
@@ -124,7 +126,7 @@ class UspTheme
         }
 
         // vamos retornar sempre na forma de lista
-        return has_string_keys($item) ? [0 => $item] : $item;
+        return has_string_keys($item) ? [$item] : $item;
     }
 
     /**

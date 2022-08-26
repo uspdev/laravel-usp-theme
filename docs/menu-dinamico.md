@@ -51,15 +51,14 @@ public function boot()
     ...
 
     Event::listen(function (UspThemeParseKey $event) {
-        if ($event->item['key'] == 'chave-definida-no-config') {
-            ....
+        if (isset($event->item['key']) && $event->item['key'] == 'chave-definida-no-config') {
             $event->item = [
                 'text' => 'descreva o ítem aqui',
                 'url' => '',
             ];
         }
         return $event->item;
-    };
+    });
 }
 ```
 

@@ -1,5 +1,5 @@
 /* Coloca cor de fundo no menu quando o item está ativo */
-.active {
+#navbarNav .active {
   background: lightgray;
 }
 

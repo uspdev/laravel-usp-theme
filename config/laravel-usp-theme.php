@@ -104,4 +104,7 @@ return [
     # menus
     'menu' => $menu,
     'right_menu' => $right_menu,
+
+    # mensagens flash - https://uspdev.github.io/laravel#31-mensagens-flash
+    'mensagensFlash' => false,
 ];

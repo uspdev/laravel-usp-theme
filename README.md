@@ -24,6 +24,7 @@ Estão disponíveis no template:
 - Uma barra de menus e sub-menus totalmente configurável;
 - Possibilidade de oferecer [**link**](docs/outros-sistemas.md) para outras aplicações da Unidade;
 - Personalização do tema por meio de [**skins**](docs/skins.md);
+- Mensagens flash pré definidas (à partir da v2.6.0);
 
 O tema possui as seguintes bibliotecas incorporadas:
 
@@ -56,6 +57,10 @@ Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras
 * [Issues](docs/issues.md)
 
 ## Changelog
+
+28/10/2022
+- release 2.6.0
+- [#92](https://github.com/uspdev/laravel-usp-theme/issues/92) - Incluídas mensagens flash pré definidas (desativadas por padrão) - [Treinamento Laravel](https://uspdev.github.io/laravel#31-mensagens-flash)
 
 3/12/2021
 

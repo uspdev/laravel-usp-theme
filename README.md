@@ -52,11 +52,16 @@ Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras
 * [Configuração do menu](docs/opcoes-menu.md)
 * [Menu ativo](docs/menu-ativo.md)
 * [Link para outros sistemas](docs/outros-sistemas.md)
+* [Seções](docs/secoes.md)
 * [Menu dinâmico](docs/menu-dinamico.md)
 * [Skins](docs/skins.md)
 * [Issues](docs/issues.md)
 
 ## Changelog
+
+30/11/2022
+- release 2.6.1
+- alterado o config para expor `container` e `key => laravel-tools`. Ajuste o config da sua aplicação.
 
 28/10/2022
 - release 2.6.0

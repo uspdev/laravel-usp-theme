@@ -2,6 +2,9 @@
 
 ## [Início](../README.md) > Instalação e configuração
 
+Ao criar uma nova aplicação, considere o uso do [Starter](https://github.com/uspdev/starter). Nesse projeto, as principais bibliotecas USPDeve já estão instaladas e configuradas.
+
+Caso prefira o caminho mais longo, siga os passos abaixo. Esse caminho proporcionará um melhor entendimento desse tema e das demais bibliotecas USPDev que você for utilizar.
 
 0. Se você vai iniciar uma nova aplicação, instale o laravel primeiro.
 
@@ -66,7 +69,7 @@ public/vendor
 ```php
 @extends('laravel-usp-theme::master')
 
-@section('title') 
+@section('title')
   @parent 
 @endsection
 

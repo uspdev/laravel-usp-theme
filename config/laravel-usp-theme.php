@@ -7,7 +7,7 @@ $admin = [
     ],
     [
         'text' => 'SubItem 2',
-        'url' =>  '/subitem2',
+        'url' => '/subitem2',
         'can' => 'admin',
     ],
     [
@@ -72,6 +72,9 @@ $right_menu = [
         'key' => 'senhaunica-socialite',
     ],
     [
+        'key' => 'laravel-tools',
+    ],
+    [
         'text' => '<i class="fas fa-cog"></i>',
         'title' => 'Configurações',
         'target' => '_blank',
@@ -80,13 +83,12 @@ $right_menu = [
     ],
 ];
 
-
 return [
     # valor default para a tag title, dentro da section title.
     # valor pode ser substituido pela aplicação.
     'title' => config('app.name'),
 
-    # USP_THEME_SKIN deve ser colocado no .env da aplicação 
+    # USP_THEME_SKIN deve ser colocado no .env da aplicação
     'skin' => env('USP_THEME_SKIN', 'uspdev'),
 
     # chave da sessão. Troque em caso de colisão com outra variável de sessão.
@@ -107,4 +109,8 @@ return [
 
     # mensagens flash - https://uspdev.github.io/laravel#31-mensagens-flash
     'mensagensFlash' => false,
+
+    # container ou container-fluid
+    'container' => 'container-fluid',
+
 ];

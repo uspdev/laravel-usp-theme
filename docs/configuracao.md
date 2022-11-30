@@ -60,8 +60,8 @@ public/vendor
 #USP_THEME_SISTEMAS_1='{"text":"Pessoas","url":"http://localhost/pessoas"}'
 #USP_THEME_SISTEMAS_2='{"text":"LDAP","url":"http://localhost/ldap"}'
 
-# Escolha o skin a ser utilizado
-#USP_THEME_SKIN=uspdev
+# Escolha o skin a ser utilizado (default=uspdev)
+#USP_THEME_SKIN=
 ```
 
 7. Edite ou crie o seu arquivo `resources/views/layouts/app.blade.php` para estender o **laravel-usp-theme**. Veja um exemplo.

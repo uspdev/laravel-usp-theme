@@ -41,6 +41,15 @@ O tema possui as seguintes bibliotecas incorporadas:
 
 As bibliotecas js são carregadas a partir de CDN.
 
+### Blocos
+
+A biblioteca possui blocos de código que podem ser incluídas (@include) no seu projeto.
+Veja a configuração básica para saber como:
+
+- card-header-sticky
+- spinner
+- datatable-simples
+
 ## Requisitos
 
 Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras versões.
@@ -59,13 +68,17 @@ Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras
 
 ## Changelog
 
+31/03/2023
+- release 2.7
+- incluído a opção de blocos que adicionam funcionalidades ao projeto. Ajuste o `layouts.app` da sua aplicação.
+
 30/11/2022
 - release 2.6.1
-- alterado o config para expor `container` e `key => laravel-tools`. Ajuste o config da sua aplicação.
+- alterado o config para expor `container` e `key => laravel-tools`. Ajuste o `config` da sua aplicação.
 
 28/10/2022
 - release 2.6.0
-- [#92](https://github.com/uspdev/laravel-usp-theme/issues/92) - Incluídas mensagens flash pré definidas (desativadas por padrão) - [Treinamento Laravel](https://uspdev.github.io/laravel#31-mensagens-flash)
+- [#92](https://github.com/uspdev/laravel-usp-theme/issues/92) - Incluídas mensagens flash pré definidas (desativadas por padrão no `config`) - [Treinamento Laravel](https://uspdev.github.io/laravel#31-mensagens-flash)
 
 3/12/2021
 

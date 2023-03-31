@@ -13,7 +13,7 @@ de um projeto para o outro. Foi inspirado no [adminLte para laravel](https://git
 e está aberto a contribuições e melhorias dos devs da USP.
 Inicialmente desenvolvido por [@marcelomodesto](https://github.com/marcelomodesto) do IME-USP.
 
-![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/tela-principal.png)
+![theme image](docs/tela-principal.png)
 
 ## Funcionalidades
 
@@ -25,6 +25,7 @@ Estão disponíveis no template:
 - Possibilidade de oferecer [**link**](docs/outros-sistemas.md) para outras aplicações da Unidade;
 - Personalização do tema por meio de [**skins**](docs/skins.md);
 - Mensagens flash pré definidas (à partir da v2.6.0);
+- Blocos (à partir da versão 2.7.0)
 
 O tema possui as seguintes bibliotecas incorporadas:
 

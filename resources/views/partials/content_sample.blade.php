@@ -99,9 +99,10 @@ na sua infância.<br>
 
     <div class="my-3">
       <h4>Bloco <b>Spinner</b></h4>
-      Clique para ver, recarregue a página para resetar<br>
+      Clique para ver, recarregue a página ou clique para restaurar.<br>
       <button class="btn btn-info btn-spinner">Botão com spinner</button><span class="mx-3"></span>
-      <a href="" onclick="return false;" class="spinner">Link com spinner</a>
+      <a href="" onclick="return false;" class="spinner">Link com spinner</a><span class="mx-3"></span>
+    <button class="btn btn-outline-primary" onclick="spinnerRestore()">Restaura o spinner</button>
     </div>
 
     <div class="my-3">
@@ -125,14 +126,3 @@ na sua infância.<br>
 
   </div>
 </div>
-
-@section('javascripts_bottom')
-  <script>
-    $(document).ready(function() {
-      $('.datatable-demo').DataTable({
-        dom: 'fBitp', // https://datatables.net/examples/basic_init/dom.html
-        "buttons": ['excelHtml5', 'csvHtml5'], // buttons plugin
-      });
-    });
-  </script>
-@endsection

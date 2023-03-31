@@ -29,27 +29,19 @@ Estão disponíveis no template:
 
 O tema possui as seguintes bibliotecas incorporadas:
 
-- bootstrap 4.6
-- jquery
-- jqueryUI
-- fontawesome
-- datatables
-  - [responsive plugin](https://datatables.net/extensions/responsive/)
-  - [HTML5 export buttons](https://datatables.net/extensions/buttons/examples/html5/simple.html)
-- jquery select2
-- datepicker
-- jquery mask
+- bootstrap (v4.6.0)
+- jquery (v3.6.0)
+- jqueryUI (v1.12.1)
+  - datepicker, etc.
+- fontawesome (v5.15.3)
+- datatables (v1.10.23)
+  - [responsive plugin](https://datatables.net/extensions/responsive/) (v2.2.7)
+  - [HTML5 export buttons](https://datatables.net/extensions/buttons/examples/html5/simple.html) (v1.6.5)
+- jquery [select2](https://github.com/select2/select2) (v4.0.13)
+
+- jquery mask (v1.14.16)
 
 As bibliotecas js são carregadas a partir de CDN.
-
-### Blocos
-
-A biblioteca possui blocos de código que podem ser incluídas (@include) no seu projeto.
-Veja a configuração básica para saber como:
-
-- card-header-sticky
-- spinner
-- datatable-simples
 
 ## Requisitos
 
@@ -65,6 +57,7 @@ Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras
 * [Seções](docs/secoes.md)
 * [Menu dinâmico](docs/menu-dinamico.md)
 * [Skins](docs/skins.md)
+* [Blocos](docs/blocos.md)
 * [Issues](docs/issues.md)
 
 ## Changelog

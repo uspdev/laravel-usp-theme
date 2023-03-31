@@ -17,7 +17,7 @@ Uso:
           if (!btn.data('text-spinner')) { // salvando o conteúdo do botão
             btn.data('text-spinner', btn.html())
           }
-          btn.addClass('disabled') // desativando depois de clicar
+          btn.addClass('disabled').prop('disabled', true) // desativando depois de clicar
           btn.html( // add spinner to button
             `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ` +
             'Carregando'.substring(0, btn.data('text-spinner').length - 3) + '..' //limita o tamanho do texto
@@ -31,7 +31,7 @@ Uso:
               let btn = $(this)
               if (btn.data('text-spinner')) { // se houver conteúdo salvo, vamos restaurar e reativar
                 btn.html(btn.data('text-spinner'))
-                btn.removeClass('disabled')
+                btn.removeClass('disabled').prop('disabled', false)
               }
             })
           } else { // se foi passado um botao, vamos aplicar somente nele

@@ -13,7 +13,7 @@ de um projeto para o outro. Foi inspirado no [adminLte para laravel](https://git
 e está aberto a contribuições e melhorias dos devs da USP.
 Inicialmente desenvolvido por [@marcelomodesto](https://github.com/marcelomodesto) do IME-USP.
 
-![theme image](https://raw.githubusercontent.com/uspdev/laravel-usp-theme/master/docs/tela-principal.png)
+![theme image](docs/tela-principal.png)
 
 ## Funcionalidades
 
@@ -25,19 +25,21 @@ Estão disponíveis no template:
 - Possibilidade de oferecer [**link**](docs/outros-sistemas.md) para outras aplicações da Unidade;
 - Personalização do tema por meio de [**skins**](docs/skins.md);
 - Mensagens flash pré definidas (à partir da v2.6.0);
+- Blocos (à partir da versão 2.7.0)
 
 O tema possui as seguintes bibliotecas incorporadas:
 
-- bootstrap 4.6
-- jquery
-- jqueryUI
-- fontawesome
-- datatables
-  - [responsive plugin](https://datatables.net/extensions/responsive/)
-  - [HTML5 export buttons](https://datatables.net/extensions/buttons/examples/html5/simple.html)
-- jquery select2
-- datepicker
-- jquery mask
+- bootstrap (v4.6.0)
+- jquery (v3.6.0)
+- jqueryUI (v1.12.1)
+  - datepicker, etc.
+- fontawesome (v5.15.3)
+- datatables (v1.10.23)
+  - [responsive plugin](https://datatables.net/extensions/responsive/) (v2.2.7)
+  - [HTML5 export buttons](https://datatables.net/extensions/buttons/examples/html5/simple.html) (v1.6.5)
+- jquery [select2](https://github.com/select2/select2) (v4.0.13)
+
+- jquery mask (v1.14.16)
 
 As bibliotecas js são carregadas a partir de CDN.
 
@@ -55,17 +57,22 @@ Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras
 * [Seções](docs/secoes.md)
 * [Menu dinâmico](docs/menu-dinamico.md)
 * [Skins](docs/skins.md)
+* [Blocos](docs/blocos.md)
 * [Issues](docs/issues.md)
 
 ## Changelog
 
+31/03/2023
+- release 2.7
+- incluído a opção de blocos que adicionam funcionalidades ao projeto. Ajuste o `layouts.app` da sua aplicação.
+
 30/11/2022
 - release 2.6.1
-- alterado o config para expor `container` e `key => laravel-tools`. Ajuste o config da sua aplicação.
+- alterado o config para expor `container` e `key => laravel-tools`. Ajuste o `config` da sua aplicação.
 
 28/10/2022
 - release 2.6.0
-- [#92](https://github.com/uspdev/laravel-usp-theme/issues/92) - Incluídas mensagens flash pré definidas (desativadas por padrão) - [Treinamento Laravel](https://uspdev.github.io/laravel#31-mensagens-flash)
+- [#92](https://github.com/uspdev/laravel-usp-theme/issues/92) - Incluídas mensagens flash pré definidas (desativadas por padrão no `config`) - [Treinamento Laravel](https://uspdev.github.io/laravel#31-mensagens-flash)
 
 3/12/2021
 

@@ -86,7 +86,7 @@ Um datatables pré configurado com:
 
 Para usar coloque em `layouts.app`
 ```
-@include('laravel-usp-theme::blocos.datatables-simples')
+@include('laravel-usp-theme::blocos.datatable-simples')
 ```
 
 No seu código use:

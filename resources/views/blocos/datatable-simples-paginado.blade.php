@@ -11,7 +11,7 @@ Uso:
 @section('styles')
   @parent
   <style>
-    .datatable-simples,
+    .datatable-simples-paginado,
     .dataTables_info {
       padding-top: 3px !important;
       padding-bottom: 3px !important;
@@ -26,21 +26,20 @@ Uso:
     @parent
     <script>
       jQuery(function() {
-        var datatableSimples = $('.datatable-simples').DataTable({
-          dom: '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-3 border rounded border-info"i>>>t',
+        var datatableSimplesPaginado = $('.datatable-simples-paginado').DataTable({
+          dom: '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-2 btn-sm"p><"ml-3 border rounded border-info"i>>>t',
           order: [],
-          paging: false,
-          lengthChange: false,
           searching: true,
           ordering: true,
           info: true,
           autoWidth: false,
+          lengthChange: false,
           lengthMenu: [
             [10, 25, 50, 100, -1],
             ['10 linhas', '25 linhas', '50 linhas', '100 linhas', 'Mostar todos']
           ],
-          pageLength: -1,
-          stateSave: false,
+          paging: true,
+          pageLength: 10,
           language: {
             search: '',
             searchPlaceholder: 'Pesquisar ..'

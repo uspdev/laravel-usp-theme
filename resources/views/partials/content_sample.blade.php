@@ -17,15 +17,18 @@ na sua infância.<br>
     <h4>Bloco <b>datatables-simples</b></h4>
     <div>
       Formata o datatables apresentando os botões de Excel/Csv, pesquisa à esquerda, contagem de registros no topo,
-      sem paginação, com ordenação.
+      paginação com 10 por página, com ordenação, responsivo.<br>
+      A ativação de fixed header, botões e paginação é por meio de classes adicionadas à tabela, assim como responsive.
       <hr />
     </div>
-    <table class="table table-stripped table-hover table-bordered datatable-simples responsive">
+    <table
+      class="table table-stripped table-hover table-bordered datatable-simples dt-buttons responsive dt-fixed-header dt-paging-10">
       <thead>
         <tr>
           <th>Nome</th>
           <th>Idade</th>
           <th>Tipo</th>
+          <th>Ordem</th>
           <th>Bla</th>
           <th>Ble</th>
           <th>Blo</th>
@@ -33,9 +36,19 @@ na sua infância.<br>
       </thead>
       <tbody>
         <tr>
-          <td>John Wick Keanu Reeves</td>
+          <td>John Wick</td>
           <td>25</td>
           <td>User</td>
+          <td>1</td>
+          <td>Bla Bla Bla Bla Bla Bla</td>
+          <td>Ble Ble Ble Ble Ble Ble</td>
+          <td>Ble Ble Ble Ble Ble Ble</td>
+        </tr>
+        <tr>
+          <td>Keanu Reeves</td>
+          <td>25</td>
+          <td>User</td>
+          <td>2</td>
           <td>Bla Bla Bla Bla Bla Bla</td>
           <td>Ble Ble Ble Ble Ble Ble</td>
           <td>Ble Ble Ble Ble Ble Ble</td>
@@ -44,6 +57,7 @@ na sua infância.<br>
           <td>Jane Doe</td>
           <td>32</td>
           <td>User</td>
+          <td>3</td>
           <td>Bla 2</td>
           <td>Ble 2</td>
           <td>Ble 2</td>
@@ -51,7 +65,8 @@ na sua infância.<br>
         <tr>
           <td>Alice in Wonderland</td>
           <td>60</td>
-          <td>Admin</td>
+          <td>Manager</td>
+          <td>4</td>
           <td>Bla 1</td>
           <td>Ble 1</td>
           <td>Ble 1</td>
@@ -60,22 +75,78 @@ na sua infância.<br>
           <td>Maria</td>
           <td>48</td>
           <td>Admin</td>
+          <td>5</td>
           <td>Bla 1</td>
           <td>Ble 1</td>
           <td>Ble 1</td>
         </tr>
+        <tr>
+          <td>José</td>
+          <td>22</td>
+          <td>Poweruser</td>
+          <td>6</td>
+          <td>Bla 1</td>
+          <td>Ble 1</td>
+          <td>Ble 1</td>
+        </tr>
+        <tr>
+          <td>João</td>
+          <td>58</td>
+          <td>Admin</td>
+          <td>7</td>
+          <td>Bla 1</td>
+          <td>Ble 1</td>
+          <td>Ble 1</td>
+        </tr>
+        <tr>
+          <td>Adriana</td>
+          <td>15</td>
+          <td>Manager</td>
+          <td>8</td>
+          <td>Bla 1</td>
+          <td>Ble 1</td>
+          <td>Ble 1</td>
+        </tr>
+        <tr>
+          <td>Thiago</td>
+          <td>33</td>
+          <td>Admin</td>
+          <td>9</td>
+          <td>Bla 1</td>
+          <td>Ble 1</td>
+          <td>Ble 1</td>
+        </tr>
+        <tr>
+          <td>Andrea</td>
+          <td>44</td>
+          <td>Admin</td>
+          <td>10</td>
+          <td>Bla 1</td>
+          <td>Ble 1</td>
+          <td>Ble 1</td>
+        </tr>
+        <tr>
+            <td>John Doe</td>
+            <td>33</td>
+            <td>Poweruser</td>
+            <td>11</td>
+            <td>Bla 2</td>
+            <td>Ble 2</td>
+            <td>Ble 2</td>
+          </tr>
       </tbody>
     </table>
   </div>
   <div class="col-md-4">
     <div class="my-3">
-        <h4>Datatables</h4>
-        <div>
-            Além do datatables propriamente, estão disponíveis os plugins:<br>
-            - responsive<br>
-            - excel/csv<br>
-            - tradução para pt-br<br>
-        </div>
+      <h4>Datatables</h4>
+      <div>
+        Além do datatables propriamente, estão disponíveis os plugins:<br>
+        - responsive<br>
+        - excel/csv<br>
+        - tradução para pt-br<br>
+        - fixed header
+      </div>
     </div>
     <div class="my-3">
       <h4>JqueryUI/Datepicker</h4>
@@ -102,7 +173,7 @@ na sua infância.<br>
       Clique para ver, recarregue a página ou clique para restaurar.<br>
       <button class="btn btn-info btn-spinner">Botão com spinner</button><span class="mx-3"></span>
       <a href="" onclick="return false;" class="spinner">Link com spinner</a><span class="mx-3"></span>
-    <button class="btn btn-outline-primary" onclick="spinnerRestore()">Restaura o spinner</button>
+      <button class="btn btn-outline-primary" onclick="spinnerRestore()">Restaura o spinner</button>
     </div>
 
     <div class="my-3">

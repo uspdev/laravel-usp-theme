@@ -78,11 +78,12 @@ $.post('ajax/teste', function(data) {
 
 #### datatable-simples
 
-Um datatables pré configurado com:
+Um datatables pré-configurado e pré-formatado que pode ativar recursos usando classes:
 - caixa de busca à esquerda
-- seguido de botões excel/csv
+- seguido de botões excel/csv: usando classe `dt-buttons`
 - seguido do número de registros
-- sem paginação
+- com paginação: usando classe `dt-paging-10` ou `dt-paging-50`
+- com fixed header: usando classe `dt-fixed-header`
 
 Para usar coloque em `layouts.app`
 ```
@@ -92,8 +93,12 @@ Para usar coloque em `layouts.app`
 No seu código use:
 
 ```html
-<table class="tables datatable-simples">
+<table class="table datatable-simples">
 ...
 ```
+ou
 
-Pode ser usado em conjunto com a classe `responsive`.
+```html
+<table class="table datatable-simples dt-buttons dt-fixed-header dt-paging-10 responsive">
+...
+```

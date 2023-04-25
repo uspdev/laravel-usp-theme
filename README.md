@@ -37,6 +37,7 @@ O tema possui as seguintes bibliotecas incorporadas:
 - datatables (v1.10.23)
   - [responsive plugin](https://datatables.net/extensions/responsive/) (v2.2.7)
   - [HTML5 export buttons](https://datatables.net/extensions/buttons/examples/html5/simple.html) (v1.6.5)
+  - [Fixed header plugin](https://datatables.net/extensions/fixedheader/) (v3.3.2)
 - jquery [select2](https://github.com/select2/select2) (v4.0.13)
 
 - jquery mask (v1.14.16)
@@ -61,6 +62,12 @@ Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras
 * [Issues](docs/issues.md)
 
 ## Changelog
+
+25/4/2023
+- release 2.8
+- removido responsive padrão do datatables (issue #114)
+- modificado datatable-simples para ativar plugins por meio de classes
+- removido datatable-simples-paginado, incorporado no datatable-simples
 
 31/03/2023
 - release 2.7

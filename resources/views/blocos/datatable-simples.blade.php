@@ -2,10 +2,16 @@
 Datatables, botoes excel e csv, sem paginação, topo em 1 linha, alinhado esquerda
 
 Uso:
-- Incluir no layouts.app ou em outro lugar: @include('laravel-usp-theme::blocos.datatables-simples')
-- Adiconar a classe 'datatables-simples'
+- Incluir no layouts.app ou em outro lugar: @include('laravel-usp-theme::blocos.datatable-simples')
+- Adiconar a classe 'datatable-simples'
+
+Classes de modificação:
+- 'dt-fixed-header': ativa o fixed header
+- 'dt-paging-10' ou 'dt-paging-50': ativa paginação com 10 ou 50 por página
+- 'dt-buttons': ativa os botões de excel e csv
 
 @author Masakik, em 23/3/2023
+@author Masakik, em 25/4/2023, incluindo classes de modificação
 --}}
 
 @section('styles')
@@ -26,26 +32,32 @@ Uso:
     @parent
     <script>
       jQuery(function() {
-        var datatableSimples = $('.datatable-simples').DataTable({
-          dom: '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-3 border rounded border-info"i>>>t',
-          order: [],
-          paging: false,
-          lengthChange: false,
-          searching: true,
-          ordering: true,
-          info: true,
-          autoWidth: false,
-          lengthMenu: [
-            [10, 25, 50, 100, -1],
-            ['10 linhas', '25 linhas', '50 linhas', '100 linhas', 'Mostar todos']
-          ],
-          pageLength: -1,
-          stateSave: false,
-          language: {
-            search: '',
-            searchPlaceholder: 'Pesquisar ..'
-          },
-          buttons: {
+
+        var datatableSimples = $('.datatable-simples')
+
+        // verifica se tem fixed header
+        let dtFixedHeader = (datatableSimples.hasClass('dt-fixed-header')) ? true : false
+
+        // verifica se tem paginação
+        let dtPaging = -1
+        let dtPageLength = -1
+        if (datatableSimples.hasClass('dt-paging-10')) {
+          dtPaging = true
+          dtPageLength = 10
+        }
+        if (datatableSimples.hasClass('dt-paging-50')) {
+          dtPaging = true
+          dtPageLength = 50
+        }
+        // ajusta o dom para mostrar menu de paginação se necessário
+        let dtDom = (dtPaging == -1) ?
+          '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-3 border rounded border-info"i>>>t' :
+          '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-2 btn-sm"p><"ml-3 border rounded border-info"i>>>t'
+
+        // verifica se tem botões
+        let dtButtons = []
+        if (datatableSimples.hasClass('dt-buttons')) {
+          dtButtons = {
             buttons: [{
                 extend: 'excelHtml5',
                 className: 'btn btn-sm btn-outline-primary'
@@ -61,6 +73,31 @@ Uso:
               }
             }
           }
+        }
+
+        // vamos inicializar o datatable
+        datatableSimples.DataTable({
+          dom: dtDom,
+          order: [],
+          paging: false,
+          lengthChange: false,
+          searching: true,
+          ordering: true,
+          info: true,
+          fixedHeader: dtFixedHeader,
+          autoWidth: false,
+          lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 linhas', '25 linhas', '50 linhas', '100 linhas', 'Mostar todos']
+          ],
+          paging: dtPaging,
+          pageLength: dtPageLength,
+          stateSave: false,
+          language: {
+            search: '',
+            searchPlaceholder: 'Pesquisar ..'
+          },
+          buttons: dtButtons,
         })
       })
     </script>

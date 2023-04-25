@@ -1,6 +1,5 @@
 // default datatables config
 $.extend( $.fn.dataTable.defaults, {
-    responsive: true,
     language: {
         url: 'vendor/laravel-usp-theme/datatables/Portuguese-Brasil.json',
     }

@@ -9,9 +9,11 @@ Classes de modificação:
 - 'dt-fixed-header': ativa o fixed header
 - 'dt-paging-10' ou 'dt-paging-50': ativa paginação com 10 ou 50 por página
 - 'dt-buttons': ativa os botões de excel e csv
+- 'dt-button-pdf' e 'dt-button pdf-landscape': se 'dt-buttons', inclui botão para pdf ou pdf-landscape
 
 @author Masakik, em 23/3/2023
 @author Masakik, em 25/4/2023, incluindo classes de modificação
+@author Masakik, em 21/9/2023, incluindo classes dt-button-pdf e dt-button-pdf-landscape #115
 --}}
 
 @section('styles')
@@ -57,16 +59,36 @@ Classes de modificação:
         // verifica se tem botões
         let dtButtons = []
         if (datatableSimples.hasClass('dt-buttons')) {
+
+          let pdfButton = ''
+          if (datatableSimples.hasClass('dt-buttons-pdf')) {
+            pdfButton = {
+              extend: 'pdfHtml5',
+              className: 'btn btn-sm btn-outline-primary'
+            }
+          }
+
+          if (datatableSimples.hasClass('dt-buttons-pdf-landscape')) {
+            pdfButton = {
+              extend: 'pdfHtml5',
+              className: 'btn btn-sm btn-outline-primary',
+              text: 'PDF-L',
+              orientation: 'landscape'
+            }
+          }
+
+          excelButton = [{
+            extend: 'excelHtml5',
+            className: 'btn btn-sm btn-outline-primary'
+          }, {
+            extend: 'csvHtml5',
+            className: 'btn btn-sm btn-outline-primary'
+          }]
+
+          excelButton.push(pdfButton)
+
           dtButtons = {
-            buttons: [{
-                extend: 'excelHtml5',
-                className: 'btn btn-sm btn-outline-primary'
-              },
-              {
-                extend: 'csvHtml5',
-                className: 'btn btn-sm btn-outline-primary'
-              }
-            ],
+            buttons: excelButton,
             dom: {
               button: {
                 className: 'btn'

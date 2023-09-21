@@ -81,6 +81,7 @@ $.post('ajax/teste', function(data) {
 Um datatables pré-configurado e pré-formatado que pode ativar recursos usando classes:
 - caixa de busca à esquerda
 - seguido de botões excel/csv: usando classe `dt-buttons`
+- seguido de botão pdf: usando classe `dt-button-pdf` ou `dt-button-pdf-landscape`
 - seguido do número de registros
 - com paginação: usando classe `dt-paging-10` ou `dt-paging-50`
 - com fixed header: usando classe `dt-fixed-header`

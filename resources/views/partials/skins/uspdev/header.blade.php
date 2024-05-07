@@ -28,10 +28,10 @@
     <div class="row">
         <div class="col-md-12">
             <a class="skin_logo" href="https://portalservicos.usp.br/">
-                <img src="{{ asset('/vendor/laravel-usp-theme/skins/uspdev/images/usp-logo.png') }}" alt="Logo da Universidade de São Paulo" />
+                <img src="{{ asset('/vendor/laravel-usp-theme/skins/uspdev/images/usp-logo.png') }}" alt="Logo da Universidade de São Paulo">
             </a>
             <span class="skin_texto">
-                <img src="{{ asset('/vendor/laravel-usp-theme/skins/uspdev/images/usp-logo-texto.png') }}" alt="Universidade de São Paulo" />
+                <img src="{{ asset('/vendor/laravel-usp-theme/skins/uspdev/images/usp-logo-texto.png') }}" alt="Universidade de São Paulo">
             </span>
         </div>
     </div>

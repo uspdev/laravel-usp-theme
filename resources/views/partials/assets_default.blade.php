@@ -5,23 +5,23 @@
     {{-- Botstrap 4 --}}
 
     {{-- FontAwesome --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
     {{-- FontAwesome --}}
 
     {{-- JqueryUI --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous">
     {{-- JqueryUI --}}
 
     {{-- DataTables --}}
     {{-- Utilizando forma concatenada de https://datatables.net/download/ --}}
     {{-- bootstrap4, jszip, datatable 1.13.4, buttons, fixed headers, responsive --}}
-    <link href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/fh-3.3.2/r-2.4.1/datatables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/fh-3.3.2/r-2.4.1/datatables.min.css" rel="stylesheet">
     {{-- DataTables --}}
 
     {{-- Select2 --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous">
     {{-- não encontrei em cdn este arquivo --}}
-    <link rel="stylesheet" href="vendor/laravel-usp-theme/css/select2-bootstrap4.min.css" />
+    <link rel="stylesheet" href="vendor/laravel-usp-theme/css/select2-bootstrap4.min.css">
     {{-- Select2 --}}
 
     @parent
@@ -47,10 +47,11 @@
 
     {{-- DataTables --}}
     {{-- Utilizando forma concatenada de https://datatables.net/download/ --}}
-    {{-- pdfmake, bootstrap4, jszip, datatable 1.13.4, buttons, fixed headers, responsive --}}
+    {{-- bootstrap4, datatable 1.13.4, buttons, jszip, pdfmake, fixed headers, responsive --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/fh-3.3.2/r-2.4.1/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/2.0.7/filtering/type-based/accent-neutralise.js"></script>
     {{-- DataTables --}}
 
     {{-- Select2 --}}

@@ -31,8 +31,15 @@
     <!-- Vamos colocal o menu nesta posição -->
     </span>
     @auth
+    @if (isset(Auth::user()->role)) <strong>{{ Auth::user()->role }}</strong> - @endif
+        @php
+            $ramal = \Uspdev\Replicado\Pessoa::obterRamalUsp(Auth::user()->codpes);
+        @endphp
         @if (isset(Auth::user()->role)) <strong>{{ Auth::user()->role }}</strong> - @endif
-        {{ Auth::user()->name }} - {{ Auth::user()->email }} |
+        <i class="fas fa-user"></i> {{ Auth::user()->name }} &nbsp; 
+        <i class="fas fa-envelope"></i> {{ Auth::user()->email }} &nbsp; 
+        <a class="text-white" href="https://uspdigital.usp.br/telefonia/" target="_blank" title="Se necessário, atualize seu ramal."><i class="fas fa-phone"></i> 
+            {{ !empty($ramal) ? $ramal : 'sem ramal' }}</a> |    
         @include('laravel-usp-theme::partials.login_bar.logout_link')
     @else
         Não autenticado |

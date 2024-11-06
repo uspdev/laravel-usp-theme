@@ -14,6 +14,7 @@ Classes de modificação:
 @author Masakik, em 23/3/2023
 @author Masakik, em 25/4/2023, incluindo classes de modificação
 @author Masakik, em 21/9/2023, incluindo classes dt-button-pdf e dt-button-pdf-landscape #115
+@author Masakik, em 10/5/2024, fixed header abaixo de card-header-sticky se houver
 --}}
 
 @section('styles')
@@ -38,7 +39,13 @@ Classes de modificação:
         var datatableSimples = $('.datatable-simples')
 
         // verifica se tem fixed header
-        let dtFixedHeader = (datatableSimples.hasClass('dt-fixed-header')) ? true : false
+        if (datatableSimples.hasClass('dt-fixed-header')) {
+          var dtFixedHeader = {
+            headerOffset: $('.card-header-sticky').outerHeight()
+          }
+        } else {
+          var dtFixedHeader = false
+        }
 
         // verifica se tem paginação
         let dtPaging = -1

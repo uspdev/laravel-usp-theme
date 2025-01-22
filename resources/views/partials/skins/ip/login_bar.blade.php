@@ -45,8 +45,10 @@
         @endif
         @include('laravel-usp-theme::partials.login_bar.logout_link')
     @else
-        Não autenticado |
-        @include('laravel-usp-theme::partials.login_bar.login_link')
+        Não autenticado
+        @if (!config('senhaunica.hideLogin'))
+          | @include('laravel-usp-theme::partials.login_bar.login_link')
+        @endif
     @endauth
 </div>
 @endsection

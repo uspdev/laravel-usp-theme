@@ -31,12 +31,10 @@
     <!-- Vamos colocal o menu nesta posição -->
     </span>
     @auth
-        @if (isset(Auth::user()->role)) <strong>{{ Auth::user()->role }}</strong> - @endif
         @php
             if (is_numeric(Auth::user()->codpes))
                 $ramal = \Uspdev\Replicado\Pessoa::obterRamalUsp(Auth::user()->codpes);
         @endphp
-        @if (isset(Auth::user()->role)) <strong>{{ Auth::user()->role }}</strong> - @endif
         <i class="fas fa-user"></i> {{ Auth::user()->name }} &nbsp; 
         <i class="fas fa-envelope"></i> {{ Auth::user()->email }} &nbsp; 
         @if (is_numeric(Auth::user()->codpes))

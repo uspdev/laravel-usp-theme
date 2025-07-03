@@ -3,7 +3,10 @@ Datatables, botoes excel e csv, sem paginação, topo em 1 linha, alinhado esque
 
 Uso:
 - Incluir no layouts.app ou em outro lugar: @include('laravel-usp-theme::blocos.datatable-simples')
-- Adiconar a classe 'datatable-simples'
+- Adiconar a classe: <table class="... datatable-simples">
+- se quiser passar algo adicional no menu do datatables, passar $dtSlot com o conteúdo desejado:
+    $dtSlot = view('partials.dt-slot')->render();
+    return view('sua-view')->compact('variaveis', 'dtSlot'));
 
 Classes de modificação:
 - 'dt-fixed-header': ativa o fixed header
@@ -15,6 +18,7 @@ Classes de modificação:
 @author Masakik, em 25/4/2023, incluindo classes de modificação
 @author Masakik, em 21/9/2023, incluindo classes dt-button-pdf e dt-button-pdf-landscape #115
 @author Masakik, em 10/5/2024, fixed header abaixo de card-header-sticky se houver
+@author Masakik, em 03/7/2025, adicionado a opção $dtSlot
 --}}
 
 @section('styles')
@@ -60,8 +64,8 @@ Classes de modificação:
         }
         // ajusta o dom para mostrar menu de paginação se necessário
         let dtDom = (dtPaging == -1) ?
-          '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-3 border rounded border-info"i>>>t' :
-          '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-2 btn-sm"p><"ml-3 border rounded border-info"i>>>t'
+          '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-3 border rounded border-info"i><"dt-slot">>>t' :
+          '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-2 btn-sm"p><"ml-3 border rounded border-info"i><"dt-slot">>>t'
 
         // verifica se tem botões
         let dtButtons = []
@@ -127,6 +131,9 @@ Classes de modificação:
             searchPlaceholder: 'Pesquisar ..'
           },
           buttons: dtButtons,
+          initComplete: function(settings, json) {
+            $('.dt-slot').html(@json($dtSlot ?? ''))
+          },
         })
       })
     </script>

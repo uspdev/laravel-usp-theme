@@ -65,7 +65,7 @@ Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras
 
 03/07/2025
 - release 2.8.15
-- adicionado variável $dtSlot ao datatables
+- adicionado variável $dtSlot ao datatable-simples
 - $dtSlot recebe uma view blade renderizada
 - exibe conteúdo da view na parte superior da tabela, a frente da contagem de registros
 

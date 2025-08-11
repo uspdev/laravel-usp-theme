@@ -86,6 +86,14 @@ Um datatables pré-configurado e pré-formatado que pode ativar recursos usando 
 - com paginação: usando classe `dt-paging-10` ou `dt-paging-50`
 - com fixed header: usando classe `dt-fixed-header`
 
+Conteúdo adicional do menu:
+Renderize uma view blade na variável `$dtSlot` com o conteúdo desejado. Pode ser um botão ou um HTML simples:
+
+```php
+$dtSlot = view('partials.dt-slot')->render();
+return view('sua-view')->compact('variaveis', 'dtSlot');
+```
+
 Para usar coloque em `layouts.app`
 ```
 @include('laravel-usp-theme::blocos.datatable-simples')

@@ -46,7 +46,7 @@ As bibliotecas js são carregadas a partir de CDN.
 
 ## Requisitos
 
-Este tema foi testado no Laravel 5.6.x, 7.24.x, 8.x mas deve funcionar em outras versões.
+Este tema foi testado no Laravel 8.x e 11.x mas deve funcionar em outras versões.
 
 
 ## Documentação

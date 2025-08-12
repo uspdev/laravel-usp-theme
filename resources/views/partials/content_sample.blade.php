@@ -22,7 +22,7 @@ na sua infância.<br>
       <hr />
     </div>
     <table
-      class="table table-stripped table-hover table-bordered datatable-simples dt-buttons responsive dt-fixed-header dt-paging-10">
+      class="table table-stripped table-hover table-bordered datatable-simples dt-buttons responsive dt-fixed-header dt-paging-10 dt-state-save">
       <thead>
         <tr>
           <th>Nome</th>

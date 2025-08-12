@@ -82,19 +82,20 @@ Um datatables pré-configurado e pré-formatado que pode ativar recursos usando 
 - caixa de busca à esquerda
 - seguido de botões excel/csv: usando classe `dt-buttons`
 - seguido de botão pdf: usando classe `dt-button-pdf` ou `dt-button-pdf-landscape`
-- seguido do número de registros
 - com paginação: usando classe `dt-paging-10` ou `dt-paging-50`
+- seguido do número de registros
 - com fixed header: usando classe `dt-fixed-header`
+- com salvamento do estado do datatable: usando a classe `dt-state-save`
+- com conteúdo adicional personalizado em `dt-slot`
 
-Conteúdo adicional do menu:
-Renderize uma view blade na variável `$dtSlot` com o conteúdo desejado. Pode ser um botão ou um HTML simples:
+Para o `dt-slot`, você pode renderizar no controller uma view blade na variável `$dtSlot` com o conteúdo desejado. Pode ser um botão ou um HTML simples:
 
 ```php
 $dtSlot = view('partials.dt-slot')->render();
 return view('sua-view')->compact('variaveis', 'dtSlot');
 ```
 
-Para usar coloque em `layouts.app`
+Para usar o datatable-simples coloque em `layouts.app`
 ```
 @include('laravel-usp-theme::blocos.datatable-simples')
 ```
@@ -108,6 +109,6 @@ No seu código use:
 ou
 
 ```html
-<table class="table datatable-simples dt-buttons dt-fixed-header dt-paging-10 responsive">
+<table class="table datatable-simples dt-buttons dt-fixed-header dt-paging-10 responsive dt-state-save">
 ...
 ```

@@ -7,7 +7,7 @@
 @include('laravel-usp-theme::partials.skin_footer_loader')
 
 {{-- Por enquanto testando novo paradigma na FFLCH --}}
-@if(env('USP_THEME_SKIN') == 'fflch')
+@if(in_array(env('USP_THEME_SKIN'), ['fflch', 'eeusp']))
   @include('laravel-usp-theme::partials.skin_menu_loader')
 @endif
 

@@ -203,7 +203,7 @@
 
 #menu .dropdown-header {
     padding: 10px 10px;
-    color: #fff;
+    color: #002147;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -215,7 +215,7 @@
     }    
 
     .navbar .navbar-toggler {
-        border-color: #fff;
+        border-color: #002147;
         padding: 0 6px;
         margin: 6px 12px;
     }

@@ -2,9 +2,9 @@
 
 @section('skin_footer')
 <!-- Footer uspdev -->
-<footer class="footer-eeusp">
+<footer class="footer-ee">
     <div class="text-center ">
-        <a href="http://ee.usp.br/" target="_blank">© {{ now()->year }} Universidade de São Paulo – EEUSP</a>
+        <a href="http://ee.usp.br/" target="_blank">© {{ now()->year }} Universidade de São Paulo – ee</a>
     </div>
     <hr>
 </footer>

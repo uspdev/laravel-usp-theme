@@ -1,9 +1,9 @@
 /**container */
-.container.container-eeusp {
+.container.container-ee {
     padding: 0;
 }
 
-.eeusp-logodefault img {
+.ee-logodefault img {
     max-width: 100%;
     height: auto;
 }
@@ -11,7 +11,7 @@
 /*----------LOGOS E NOMES-----------*/
 @media (min-width:768px) {
     /*LOGODEFAULT*/
-    .eeusp-logodefault {
+    .ee-logodefault {
         display:block;
         position:relative;
         padding-bottom: 30px;
@@ -19,7 +19,7 @@
     }
     
     /*CONTAINER DE LOGOS E NOMES*/
-    .eeusp-firstsecondthird {
+    .ee-firstsecondthird {
         display: flex;
         flex-wrap: nowrap;    
         width: 100%;
@@ -30,39 +30,39 @@
         width: 100%;
     }
     
-    /*LOGO eeusp*/
-    .eeusp-logowrap {
+    /*LOGO ee*/
+    .ee-logowrap {
         width: 200px;
         height: auto;
         min-width: 84px;
     }
     
     /*NOME E SLOGAN*/
-    .eeusp-second {
+    .ee-second {
         padding-left: 10px;
         padding-right: 10px;
     }
 
     /*LOGO USP*/
-    .eeusp-third {
+    .ee-third {
         width: 95px; 
         height:51px;
     }
 
-    .eeusp-logo-usp-img {
+    .ee-logo-usp-img {
         padding-top: 15px;
     }
     
     /*CONTEÙDO DO SECOND (SITE E SLOGAN)*/
     /*FONTE*/
-    .eeusp-second a {
+    .ee-second a {
         font-family: "Arial Narrow", "Arial" , Sans-serif;
         text-decoration: none;
         color: #002147;
     }
     
     /*SLOGAN*/
-    .eeusp-slogan {
+    .ee-slogan {
         font-size: 13pt;
         line-height: 1em;
         padding-left: 2px;
@@ -70,7 +70,7 @@
     }
     
     /*NOME DO SITE*/
-    .eeusp-site-name {
+    .ee-site-name {
         font-size: 30pt;
         line-height: 1em;
         margin-bottom: -6px;
@@ -81,7 +81,7 @@
 @media (max-width:767px){
     /*----------LOGOS E NOMES-----------*/
     /*LOGODEFAULT*/
-    .eeusp-logodefault{
+    .ee-logodefault{
         display:block;
         position:relative;
         padding-bottom: 5%;
@@ -89,7 +89,7 @@
     }
     
     /*CONTAINER DE LOGOS E NOMES*/
-    .eeusp-firstsecondthird {
+    .ee-firstsecondthird {
         display: flex;
         flex-wrap: nowrap;    
         width: 100%;    
@@ -97,25 +97,25 @@
         padding-right: 10px; 
     }
     
-    /*LOGO eeusp*/
-    .eeusp-logowrap{
+    /*LOGO ee*/
+    .ee-logowrap{
         width: 84px;
         min-width: 84px;
     }
     
     /*NOME E SLOGAN*/
-    .eeusp-second{
+    .ee-second{
         padding-left: 6px;
     }
 
     /*LOGO USP*/
-    .eeusp-third {
+    .ee-third {
         display:none;
     }
     
     /*CONTEÙDO DO SECOND (SITE E SLOGAN)*/
     /*FONTE*/
-    .eeusp-second a{
+    .ee-second a{
         Font-family: "Arial Narrow", "Arial" , Sans-serif;
         text-transform: uppercase;
         text-decoration: none;
@@ -123,7 +123,7 @@
     }
     
     /*SLOGAN E NOME DO SITE*/
-    .eeusp-slogan, .eeusp-site-name {
+    .ee-slogan, .ee-site-name {
         font-size: 15px;
         line-height: 13px;
     }
@@ -236,14 +236,14 @@
 
 
 /** FOOTER */
-.footer-eeusp {
+.footer-ee {
     background-color: #002147;
     color: #fff;
     padding: 20px;
     margin-top: 40px;
 }
 
-.footer-eeusp a {
+.footer-ee a {
     color: #fff;
     font-size: 14px;
 }

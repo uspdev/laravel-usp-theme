@@ -22,6 +22,7 @@ $(document).ready(function() {
     //DataTables
     $('.dataTable, .datatable').DataTable({
         paging: true
+        , retrieve: true
         , lengthChange: true
         , searching: true
         , ordering: true

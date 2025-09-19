@@ -126,14 +126,48 @@ na sua infância.<br>
           <td>Ble 1</td>
         </tr>
         <tr>
-            <td>John Doe</td>
-            <td>33</td>
-            <td>Poweruser</td>
-            <td>11</td>
-            <td>Bla 2</td>
-            <td>Ble 2</td>
-            <td>Ble 2</td>
-          </tr>
+          <td>John Doe</td>
+          <td>33</td>
+          <td>Poweruser</td>
+          <td>11</td>
+          <td>Bla 2</td>
+          <td>Ble 2</td>
+          <td>Ble 2</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="my-3">&nbsp;</div>
+    <h4>Datatable default</h4>
+    <table class="table table-sm table-stripped table-hover table-bordered datatable">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Wick</td>
+          <td>25</td>
+          <td>User</td>
+        </tr>
+        <tr>
+          <td>Keanu Reeves</td>
+          <td>25</td>
+          <td>User</td>
+        </tr>
+        <tr>
+          <td>Jane Doe</td>
+          <td>32</td>
+          <td>User</td>
+        </tr>
+        <tr>
+          <td>Alice in Wonderland</td>
+          <td>60</td>
+          <td>Manager</td>
+        </tr>
       </tbody>
     </table>
   </div>

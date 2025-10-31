@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-12">
             <a class="skin_logo" href="">
-                <img src="{{ asset('/vendor/laravel-usp-theme/skins/fau/images/fau-logo.png') }}" alt="Logo da Faculdade de Arquitetura e Urbanismo e de Design">
+                <img src="{{ asset('/vendor/laravel-usp-theme/skins/fau/images/fau-logo.png') }}" alt="Faculdade de Arquitetura e Urbanismo e de Design">
             </a>
             <span class="skin_texto">
                 <img src="{{ asset('/vendor/laravel-usp-theme/skins/fau/images/fau-logo-texto.png') }}" alt="FAU">

@@ -1,6 +1,6 @@
 @section('skin_login_bar')
 
-<div class="container p-0">
+<div class="container-fluid">
     <div class="text-right">
         <span style="float:left">
         <!-- Vamos colocal o menu nesta posição -->

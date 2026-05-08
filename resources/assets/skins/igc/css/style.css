@@ -1,0 +1,84 @@
+a:hover, .dourado {
+    color: #a19152;
+}
+a, .verde {
+    color: #004437;
+}
+
+
+.container-fluid {
+    padding-right: 0;
+}
+
+.btn-success, .page-item.active {
+    background-color: #004437;
+    border-color: #004437;
+}
+.btn-success:hover {
+    background-color: #a19152;
+    border-color: #a19152;
+}
+
+.page-item.active .page-link {
+    background-color: #004437;
+    border-color: #004437;
+}
+.page-item.active .page-link:hover {
+    color: #a19152;
+}
+
+/* HEADER */
+/* degrade da barra do logotipo */
+.degrade {
+    background: linear-gradient(
+                    to right,
+                    #ffffff 0%,
+                    #ffffff 66%,
+                    #a19152 100%
+                );
+}
+#skin_header  .container-fluid {
+    display: block;
+    height: 110px;
+    background-color: #FFFFFF;
+    font-size: 24px;
+}
+#skin_header .skin_logo img {
+    height: 100px;
+    margin: 10px;
+}
+#skin_header .skin_texto img {
+    margin-top: 8px;
+    height: 50px;
+} 
+.navbar-brand {
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+/* LOGIN BAR */
+/* #skin_login_bar é o div pai */
+#skin_login_bar {
+display: block;
+background-color: #004437; /*verde*/
+font-size: 16px;
+color: #eeeeee;
+padding-top: 20px;
+margin-bottom: 10px;
+box-shadow: 0 3px 0 #a19152; /* linha dourada */
+}
+/* .login_logout_link formata os links correspondentes que estão nos includes */
+#skin_login_bar .login_logout_link {
+
+    text-decoration: none !important;
+    fcolor: #FFFFFF !important;ont-weight: bold;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+.login_logout_link{
+    color: #a19152 !important;
+    font-size: 18px;
+}
+.login_logout_link:hover{
+    color: #eeeeee !important;
+}

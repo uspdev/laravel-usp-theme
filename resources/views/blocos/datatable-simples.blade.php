@@ -21,6 +21,7 @@ Classes de modificação:
 @author Masakik, em 10/5/2024, fixed header abaixo de card-header-sticky se houver
 @author Masakik, em 03/7/2025, adicionado a opção $dtSlot
 @author Masakik, em 11/08/2025, salva o estado da tabela no localStorage
+@author Masakik, em 03/06/2026, permite filtro inicial via ?filter= na URL, desabilitando stateSave nesse caso
 --}}
 
 @section('styles')
@@ -44,6 +45,10 @@ Classes de modificação:
 
         let dtContadorId = 1; // contador global para ids gerados
 
+        // pega ?filter=?? da URL para aplicar filtro inicial, se houver
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialSearch = urlParams.get('filter') || '';
+
         $('.datatable-simples').each(function() {
           var $tabela = $(this);
           var tabelaId = $tabela.attr('id');
@@ -56,6 +61,10 @@ Classes de modificação:
 
           // verifica se deve salvar o estado
           var dtStateSave = $tabela.hasClass('dt-state-save');
+          if (urlParams.has('filter')) {
+            // se tiver ?filter não usa stateSave
+            dtStateSave = false;
+          }
 
           // verifica se tem fixed header
           var dtFixedHeader = $tabela.hasClass('dt-fixed-header') ? {
@@ -137,6 +146,9 @@ Classes de modificação:
               ['10 linhas', '25 linhas', '50 linhas', '100 linhas', 'Mostrar todos']
             ],
             stateSave: dtStateSave,
+            search: {
+              search: initialSearch
+            },
             language: {
               search: '',
               searchPlaceholder: 'Pesquisar ..'

@@ -22,6 +22,7 @@ Classes de modificação:
 @author Masakik, em 03/7/2025, adicionado a opção $dtSlot
 @author Masakik, em 11/08/2025, salva o estado da tabela no localStorage
 @author Masakik, em 03/06/2026, permite filtro inicial via ?filter= na URL, desabilitando stateSave nesse caso
+@author Lucas, em 11/06/2026, adicionado botão para limpar busca atual
 --}}
 
 @section('styles')
@@ -155,9 +156,25 @@ Classes de modificação:
             },
             buttons: dtButtons,
             initComplete: function(settings, json) {
+              var table = settings.oInstance.api();
+              var $searchInput = $(settings.nTableWrapper).find('input[type="search"]');
+
               // Insere conteúdo do $dtSlot dentro do .dt-slot desta tabela
               var container = $(settings.nTableWrapper).find('.dt-slot');
               container.html(@json($dtSlot ?? ''));
+
+              // Botão para limpar a busca atual
+              if ($searchInput.length) {
+                var $clearButton = $(
+                  '<button type="button" class="btn btn-sm btn-outline-secondary ml-2" title="Limpar busca" aria-label="Limpar busca">Limpar</button>'
+                  );
+
+                $searchInput.after($clearButton);
+                $clearButton.on('click', function() {
+                  table.search('').draw();
+                  $searchInput.val('').trigger('input').focus();
+                });
+              }
             }
           });
 

@@ -22,7 +22,7 @@ Classes de modificação:
 @author Masakik, em 03/7/2025, adicionado a opção $dtSlot
 @author Masakik, em 11/08/2025, salva o estado da tabela no localStorage
 @author Masakik, em 03/06/2026, permite filtro inicial via ?filter= na URL, desabilitando stateSave nesse caso
-@author Lucas, em 11/06/2026, adicionado botão para limpar busca atual
+@author Lucas, em 11/06/2026, adicionado botão para limpar busca, pois o nativo não funciona no Firefox
 --}}
 
 @section('styles')
@@ -34,6 +34,43 @@ Classes de modificação:
       padding-bottom: 3px !important;
       padding-left: 8px !important;
       padding-right: 8px !important;
+    }
+
+    .dataTables_wrapper .dataTables_filter .dt-search-field-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dataTables_wrapper .dataTables_filter .dt-search-field-wrap input[type="search"] {
+      padding-right: 1.6rem;
+    }
+
+    .dataTables_wrapper .dataTables_filter .dt-search-clear {
+      position: absolute;
+      top: 50%;
+      right: .45rem;
+      transform: translateY(-50%);
+      border: 0;
+      background: transparent;
+      color: #6c757d;
+      font-size: .85rem;
+      line-height: 1;
+      padding: 0;
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+
+    .dataTables_wrapper .dataTables_filter .dt-search-clear:hover,
+    .dataTables_wrapper .dataTables_filter .dt-search-clear:focus {
+      color: #343a40;
+      outline: none;
+    }
+    /* Remove o botão de limpar do campo de busca no WebKit para usar o nosso */
+    .dataTables_wrapper .dataTables_filter input[type="search"]::-webkit-search-cancel-button,
+    .dataTables_wrapper .dataTables_filter input[type="search"]::-webkit-search-decoration {
+      -webkit-appearance: none;
+      appearance: none;
     }
   </style>
 @endsection
@@ -156,24 +193,40 @@ Classes de modificação:
             },
             buttons: dtButtons,
             initComplete: function(settings, json) {
-              var table = settings.oInstance.api();
-              var $searchInput = $(settings.nTableWrapper).find('input[type="search"]');
-
               // Insere conteúdo do $dtSlot dentro do .dt-slot desta tabela
               var container = $(settings.nTableWrapper).find('.dt-slot');
               container.html(@json($dtSlot ?? ''));
 
-              // Botão para limpar a busca atual
-              if ($searchInput.length) {
-                var $clearButton = $(
-                  '<button type="button" class="btn btn-sm btn-outline-secondary ml-2" title="Limpar busca" aria-label="Limpar busca">Limpar</button>'
-                  );
+              // Clear button consistente entre navegadores no filtro de busca
+              var $wrapper = $(settings.nTableWrapper);
+              var $filter = $wrapper.find('.dataTables_filter');
+              var $input = $filter.find('input[type="search"]');
 
-                $searchInput.after($clearButton);
+              if ($input.length && !$filter.find('.dt-search-clear').length) {
+                var dtApi = new $.fn.dataTable.Api(settings);
+                var $fieldWrap = $('<span class="dt-search-field-wrap"></span>');
+                var $clearButton = $(
+                  '<button type="button" class="dt-search-clear" aria-label="Limpar busca" title="Limpar busca">' +
+                  '<i class="fas fa-times" aria-hidden="true"></i>' +
+                  '</button>'
+                );
+
+                $input.before($fieldWrap);
+                $fieldWrap.append($input);
+                $fieldWrap.append($clearButton);
+
+                var updateClearButton = function() {
+                  $clearButton.toggle(!!$input.val());
+                };
+
+                $input.on('input.dtSearchClear change.dtSearchClear keyup.dtSearchClear', updateClearButton);
                 $clearButton.on('click', function() {
-                  table.search('').draw();
-                  $searchInput.val('').trigger('input').focus();
+                  $input.val('').trigger('input').focus();
+                  dtApi.search('').draw();
+                  updateClearButton();
                 });
+
+                updateClearButton();
               }
             }
           });

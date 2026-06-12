@@ -80,6 +80,8 @@ $.post('ajax/teste', function(data) {
 
 Um datatables pré-configurado e pré-formatado que pode ativar recursos usando classes:
 - caixa de busca à esquerda
+  - com botão clear próprio
+  - com filtro inicial via url -> ?filter=termo
 - seguido de botões excel/csv: usando classe `dt-buttons`
 - seguido de botão pdf: usando classe `dt-button-pdf` ou `dt-button-pdf-landscape`
 - com paginação: usando classe `dt-paging-10` ou `dt-paging-50`
@@ -87,6 +89,7 @@ Um datatables pré-configurado e pré-formatado que pode ativar recursos usando 
 - com fixed header: usando classe `dt-fixed-header`
 - com salvamento do estado do datatable: usando a classe `dt-state-save`
 - com conteúdo adicional personalizado em `dt-slot`
+
 
 Para o `dt-slot`, você pode renderizar no controller uma view blade na variável `$dtSlot` com o conteúdo desejado. Pode ser um botão ou um HTML simples:
 

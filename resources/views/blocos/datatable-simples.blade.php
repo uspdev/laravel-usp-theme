@@ -15,6 +15,9 @@ Classes de modificação:
 - 'dt-button-pdf' e 'dt-button pdf-landscape': se 'dt-buttons', inclui botão para pdf ou pdf-landscape
 - 'dt-state-save': salva o estado da tabela no localStorage
 
+Filtro inicial via URL:
+- Para aplicar um filtro inicial, basta incluir ?filter=termo na URL da página.
+
 @author Masakik, em 23/3/2023
 @author Masakik, em 25/4/2023, incluindo classes de modificação
 @author Masakik, em 21/9/2023, incluindo classes dt-button-pdf e dt-button-pdf-landscape #115
@@ -27,52 +30,55 @@ Classes de modificação:
 
 @section('styles')
   @parent
-  <style>
-    .datatable-simples,
-    .dataTables_wrapper .dataTables_info {
-      padding-top: 3px !important;
-      padding-bottom: 3px !important;
-      padding-left: 8px !important;
-      padding-right: 8px !important;
-    }
+  @once
+    <style>
+      .datatable-simples,
+      .dataTables_wrapper .dataTables_info {
+        padding-top: 3px !important;
+        padding-bottom: 3px !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+      }
 
-    .dataTables_wrapper .dataTables_filter .dt-search-field-wrap {
-      position: relative;
-      display: inline-block;
-    }
+      .dataTables_wrapper .dataTables_filter .dt-search-field-wrap {
+        position: relative;
+        display: inline-block;
+      }
 
-    .dataTables_wrapper .dataTables_filter .dt-search-field-wrap input[type="search"] {
-      padding-right: 1.6rem;
-    }
+      .dataTables_wrapper .dataTables_filter .dt-search-field-wrap input[type="search"] {
+        padding-right: 1.6rem;
+      }
 
-    .dataTables_wrapper .dataTables_filter .dt-search-clear {
-      position: absolute;
-      top: 50%;
-      right: .45rem;
-      transform: translateY(-50%);
-      border: 0;
-      background: transparent;
-      color: #6c757d;
-      font-size: .85rem;
-      line-height: 1;
-      padding: 0;
-      width: 1rem;
-      height: 1rem;
-      cursor: pointer;
-    }
+      .dataTables_wrapper .dataTables_filter .dt-search-clear {
+        position: absolute;
+        top: 50%;
+        right: .45rem;
+        transform: translateY(-50%);
+        border: 0;
+        background: transparent;
+        color: #6c757d;
+        font-size: .85rem;
+        line-height: 1;
+        padding: 0;
+        width: 1rem;
+        height: 1rem;
+        cursor: pointer;
+      }
 
-    .dataTables_wrapper .dataTables_filter .dt-search-clear:hover,
-    .dataTables_wrapper .dataTables_filter .dt-search-clear:focus {
-      color: #343a40;
-      outline: none;
-    }
-    /* Remove o botão de limpar do campo de busca no WebKit para usar o nosso */
-    .dataTables_wrapper .dataTables_filter input[type="search"]::-webkit-search-cancel-button,
-    .dataTables_wrapper .dataTables_filter input[type="search"]::-webkit-search-decoration {
-      -webkit-appearance: none;
-      appearance: none;
-    }
-  </style>
+      .dataTables_wrapper .dataTables_filter .dt-search-clear:hover,
+      .dataTables_wrapper .dataTables_filter .dt-search-clear:focus {
+        color: #343a40;
+        outline: none;
+      }
+
+      /* Remove o botão de limpar do campo de busca no WebKit para usar o nosso */
+      .dataTables_wrapper .dataTables_filter input[type="search"]::-webkit-search-cancel-button,
+      .dataTables_wrapper .dataTables_filter input[type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+        appearance: none;
+      }
+    </style>
+  @endonce
 @endsection
 
 @section('javascripts_bottom')
@@ -122,15 +128,10 @@ Classes de modificação:
             dtPageLength = 50;
           }
 
-          // ajusta o dom para mostrar menu de paginação se necessário
-          let dtDom = (dtPaging == -1) ?
-            '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-3 border rounded border-info"i><"dt-slot">>>t' :
-            '<"row"<"col-md-12 form-inline"<"mr-2"f>B<"ml-2 btn-sm"p><"ml-3 border rounded border-info"i><"dt-slot">>>t'
-
-          // verifica se tem botões
-          let dtButtons = [];
+          let dtButtons = null;
+          let dtButtonDom = '';
           if ($tabela.hasClass('dt-buttons')) {
-            let pdfButton = '';
+            let pdfButton = null;
             if ($tabela.hasClass('dt-buttons-pdf')) {
               pdfButton = {
                 extend: 'pdfHtml5',
@@ -165,10 +166,50 @@ Classes de modificação:
                 }
               }
             };
+            dtButtonDom = 'B';
+          }
+
+          let dtDom = dtPaging ?
+            '<"row"<"col-md-12 form-inline"<"mr-2"f>' + dtButtonDom +
+            '<"ml-2 btn-sm"p><"ml-3 border rounded border-info"i><"dt-slot">>>t' :
+            '<"row"<"col-md-12 form-inline"<"mr-2"f>' + dtButtonDom +
+            '<"ml-3 border rounded border-info"i><"dt-slot">>>t'
+
+          function adicionarBotaoLimparBusca(settings) {
+            var $wrapper = $(settings.nTableWrapper);
+            var $filter = $wrapper.find('.dataTables_filter');
+            var $input = $filter.find('input[type="search"]');
+
+            if ($input.length && !$filter.find('.dt-search-clear').length) {
+              var dtApi = new $.fn.dataTable.Api(settings);
+              var $fieldWrap = $('<span class="dt-search-field-wrap"></span>');
+              var $clearButton = $(
+                '<button type="button" class="dt-search-clear" aria-label="Limpar busca" title="Limpar busca">' +
+                '<i class="fas fa-times" aria-hidden="true"></i>' +
+                '</button>'
+              );
+
+              $input.before($fieldWrap);
+              $fieldWrap.append($input);
+              $fieldWrap.append($clearButton);
+
+              var updateClearButton = function() {
+                $clearButton.toggle(!!$input.val());
+              };
+
+              $input.on('input.dtSearchClear change.dtSearchClear keyup.dtSearchClear', updateClearButton);
+              $clearButton.on('click', function() {
+                $input.val('').trigger('input').focus();
+                dtApi.search('').draw();
+                updateClearButton();
+              });
+
+              updateClearButton();
+            }
           }
 
           // inicializa o datatable para esta tabela
-          $tabela.DataTable({
+          var dtConfig = {
             dom: dtDom,
             order: [],
             paging: dtPaging,
@@ -191,45 +232,20 @@ Classes de modificação:
               search: '',
               searchPlaceholder: 'Pesquisar ..'
             },
-            buttons: dtButtons,
             initComplete: function(settings, json) {
               // Insere conteúdo do $dtSlot dentro do .dt-slot desta tabela
               var container = $(settings.nTableWrapper).find('.dt-slot');
               container.html(@json($dtSlot ?? ''));
 
-              // Clear button consistente entre navegadores no filtro de busca
-              var $wrapper = $(settings.nTableWrapper);
-              var $filter = $wrapper.find('.dataTables_filter');
-              var $input = $filter.find('input[type="search"]');
-
-              if ($input.length && !$filter.find('.dt-search-clear').length) {
-                var dtApi = new $.fn.dataTable.Api(settings);
-                var $fieldWrap = $('<span class="dt-search-field-wrap"></span>');
-                var $clearButton = $(
-                  '<button type="button" class="dt-search-clear" aria-label="Limpar busca" title="Limpar busca">' +
-                  '<i class="fas fa-times" aria-hidden="true"></i>' +
-                  '</button>'
-                );
-
-                $input.before($fieldWrap);
-                $fieldWrap.append($input);
-                $fieldWrap.append($clearButton);
-
-                var updateClearButton = function() {
-                  $clearButton.toggle(!!$input.val());
-                };
-
-                $input.on('input.dtSearchClear change.dtSearchClear keyup.dtSearchClear', updateClearButton);
-                $clearButton.on('click', function() {
-                  $input.val('').trigger('input').focus();
-                  dtApi.search('').draw();
-                  updateClearButton();
-                });
-
-                updateClearButton();
-              }
+              adicionarBotaoLimparBusca(settings);
             }
-          });
+          };
+
+          if (dtButtons) {
+            dtConfig.buttons = dtButtons;
+          }
+
+          $tabela.DataTable(dtConfig);
 
         });
 

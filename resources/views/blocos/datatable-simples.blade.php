@@ -131,23 +131,7 @@ Filtro inicial via URL:
           let dtButtons = null;
           let dtButtonDom = '';
           if ($tabela.hasClass('dt-buttons')) {
-            let pdfButton = null;
-            if ($tabela.hasClass('dt-buttons-pdf')) {
-              pdfButton = {
-                extend: 'pdfHtml5',
-                className: 'btn btn-sm btn-outline-primary'
-              };
-            }
-            if ($tabela.hasClass('dt-buttons-pdf-landscape')) {
-              pdfButton = {
-                extend: 'pdfHtml5',
-                className: 'btn btn-sm btn-outline-primary',
-                text: 'PDF-L',
-                orientation: 'landscape'
-              };
-            }
-
-            let excelButton = [{
+            const buttons = [{
                 extend: 'excelHtml5',
                 className: 'btn btn-sm btn-outline-primary'
               },
@@ -156,10 +140,18 @@ Filtro inicial via URL:
                 className: 'btn btn-sm btn-outline-primary'
               }
             ];
-            if (pdfButton) excelButton.push(pdfButton);
-
+            const hasPdf = $tabela.hasClass('dt-buttons-pdf');
+            const hasPdfLandscape = $tabela.hasClass('dt-buttons-pdf-landscape');
+            if (hasPdf || hasPdfLandscape) {
+              buttons.push({
+                extend: 'pdfHtml5',
+                className: 'btn btn-sm btn-outline-primary',
+                text: hasPdfLandscape ? 'PDF-L' : 'PDF',
+                orientation: hasPdfLandscape ? 'landscape' : 'portrait'
+              });
+            }
             dtButtons = {
-              buttons: excelButton,
+              buttons,
               dom: {
                 button: {
                   className: 'btn'
@@ -169,11 +161,14 @@ Filtro inicial via URL:
             dtButtonDom = 'B';
           }
 
-          let dtDom = dtPaging ?
-            '<"row"<"col-md-12 form-inline"<"mr-2"f>' + dtButtonDom +
-            '<"ml-2 btn-sm"p><"ml-3 border rounded border-info"i><"dt-slot">>>t' :
-            '<"row"<"col-md-12 form-inline"<"mr-2"f>' + dtButtonDom +
-            '<"ml-3 border rounded border-info"i><"dt-slot">>>t'
+          // {{-- https://stackoverflow.com/questions/27678052/usage-of-the-backtick-character-in-javascript --}}
+          let dtDom = `<"dt-top-bar"<"col-md-12 form-inline"
+                  <"mr-2"f>
+                  ${dtButtonDom}
+                  ${dtPaging ? '<"ml-2 btn-sm"p>' : ''}
+                  <"ml-3 border rounded border-info"i>
+                  <"dt-slot">
+                >>`;
 
           function adicionarBotaoLimparBusca(settings) {
             var $wrapper = $(settings.nTableWrapper);

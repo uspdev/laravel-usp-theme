@@ -32,7 +32,8 @@
     </span>
     @auth
         @php
-            if (is_numeric(Auth::user()->codpes))
+            $ramal = '';
+            if (class_exists('\Uspdev\Replicado\Pessoa') && is_numeric(Auth::user()->codpes))
                 $ramal = \Uspdev\Replicado\Pessoa::obterRamalUsp(Auth::user()->codpes);
         @endphp
         <i class="fas fa-user"></i> {{ Auth::user()->name }} &nbsp; 

@@ -107,6 +107,8 @@ return [
     'logout_method' => 'POST',
     'logout_url' => 'logout',
     'login_url' => 'login',
+    # opção de login local, habilitada no .env da aplicação consumidora
+    'login_local' => env('USP_THEME_LOGIN_LOCAL', false),
 
     # menus
     'menu' => $menu,

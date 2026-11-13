@@ -22,6 +22,7 @@
                 <form id="usp-theme-login-form" class="bg-light border rounded p-4 shadow-sm" method="POST" action="{{ parse_url(route('SenhaunicaLocalLoginAs'), PHP_URL_PATH) }}">
                     @csrf
                     <h6 class="text-muted font-weight-bold mb-3">Entrar com Login Local</h6>
+                    <div id="usp-theme-login-errors" class="alert alert-danger" role="alert" tabindex="-1" hidden></div>
                     <div class="form-group mb-3">
                         <label class="small font-weight-bold" for="usp-theme-login-email">E-mail</label>
                         <input type="email" class="form-control" id="usp-theme-login-email" name="email"
@@ -45,25 +46,77 @@
 </div>
 
 <script>
+    let uspThemeLoginAttempt = 0;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        $('#usp-theme-login-modal').on('hide.bs.modal', function () {
+            uspThemeLoginAttempt++;
+            const errors = document.getElementById('usp-theme-login-errors');
+            errors.hidden = true;
+            errors.textContent = '';
+        });
+    });
+
     document.getElementById('usp-theme-login-form').addEventListener('submit', async function (event) {
         event.preventDefault();
 
         const form = event.currentTarget;
-        const response = await fetch(form.action, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            credentials: 'same-origin',
-            redirect: 'manual',
-            body: new FormData(form)
-        });
+        const button = form.querySelector('button[type="submit"]');
+        const errors = document.getElementById('usp-theme-login-errors');
+        if (button.disabled) return;
+        const attempt = ++uspThemeLoginAttempt;
 
-        // Com Accept: application/json, a validação retorna 422; o sucesso
-        // do controller original retorna 302, exposto pelo fetch como opaqueredirect.
-        if (response.type === 'opaqueredirect') {
-            window.location.assign(new URL('./', form.action).href);
+        errors.hidden = true;
+        errors.textContent = '';
+        button.disabled = true;
+        form.setAttribute('aria-busy', 'true');
+
+        function showError(message) {
+            // Ignora erros de uma tentativa iniciada antes de fechar o modal.
+            if (attempt !== uspThemeLoginAttempt) return;
+            errors.textContent = message;
+            errors.hidden = false;
+            errors.focus();
+        }
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin',
+                redirect: 'manual',
+                body: new FormData(form)
+            });
+            
+            if (response.status === 422) {
+                const data = await response.json().catch(() => ({}));
+                const messages = Object.values(data.errors || {}).flat()
+                    .filter(message => typeof message === 'string');
+                showError(messages.join(' ') || 'Não foi possível entrar. Verifique o e-mail e a senha informados.');
+                return;
+            }
+
+            if (response.status === 419) {
+                showError('Sua sessão expirou. Atualize a página e tente novamente.');
+                return;
+            }
+
+            // Com Accept: application/json, as credenciais inválidas retornam 422.
+            // No sucesso, o controller redireciona; não seguimos esse destino via AJAX.
+            if (response.type === 'opaqueredirect' || response.ok) {
+                window.location.reload();
+                return;
+            }
+
+            showError('Não foi possível entrar. Tente novamente em instantes.');
+        } catch (error) {
+            showError('Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.');
+        } finally {
+            button.disabled = false;
+            form.removeAttribute('aria-busy');
         }
     });
 </script>

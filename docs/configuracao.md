@@ -63,13 +63,7 @@ public/vendor
 # Escolha o skin a ser utilizado (default=uspdev)
 #USP_THEME_SKIN=
 
-# Habilita a opção de login local no tema (default=false)
-#USP_THEME_LOGIN_LOCAL=false
 ```
-
-A variável `USP_THEME_LOGIN_LOCAL` é lida do `.env` da aplicação consumidora e fica
-disponível em `config('laravel-usp-theme.login_local')`. Use `true` para habilitar a opção ou `false` para desabilitar. Sem a variável, o padrão é `false`.
-Essa configuração, por si só, não cria rotas nem implementa a autenticação local.
 
 7. Edite ou crie o seu arquivo `resources/views/layouts/app.blade.php` para estender o **laravel-usp-theme**. Veja um exemplo.
    

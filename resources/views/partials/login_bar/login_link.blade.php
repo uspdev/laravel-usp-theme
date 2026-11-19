@@ -1,5 +1,5 @@
 <a class="login_logout_link" href="{{ $login_url }}"
-    @if (config('laravel-usp-theme.login_local'))
+    @if (config('senhaunica.allowsLoginLocal') && \Illuminate\Support\Facades\Route::has('SenhaunicaLocalLoginAs'))
         data-toggle="modal" data-target="#usp-theme-login-modal" aria-haspopup="dialog" aria-controls="usp-theme-login-modal"
     @endif
 >

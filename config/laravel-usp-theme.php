@@ -115,7 +115,7 @@ return [
     'right_menu' => $right_menu,
 
     # mensagens flash - https://uspdev.github.io/laravel#31-mensagens-flash
-    'mensagensFlash' => false,
+    'mensagensFlash' => true,
 
     # integração opcional com endpoint de mensagens do cadastros-auxiliares
     'cadastros_auxiliares_mensagens_integracao' => env('CADASTROS_AUXILIARES_MENSAGENS_INTEGRACAO', false),

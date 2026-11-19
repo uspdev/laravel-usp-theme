@@ -24,7 +24,7 @@ Estão disponíveis no template:
 - Uma barra de menus e sub-menus totalmente configurável;
 - Possibilidade de oferecer [**link**](docs/outros-sistemas.md) para outras aplicações da Unidade;
 - Personalização do tema por meio de [**skins**](docs/skins.md);
-- Mensagens flash pré definidas (à partir da v2.6.0);
+- Mensagens flash pré definidas(à partir da v2.6.0), ativada como padrão agora;
 - Blocos (à partir da versão 2.7.0)
 
 O tema possui as seguintes bibliotecas incorporadas:

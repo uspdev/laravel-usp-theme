@@ -62,7 +62,7 @@
     </div>
 
     @guest
-        @if (config('laravel-usp-theme.login_local'))
+        @if (config('senhaunica.allowsLoginLocal') && \Illuminate\Support\Facades\Route::has('SenhaunicaLocalLoginAs'))
             @include('laravel-usp-theme::partials.login_bar.login_modal')
         @endif
     @endguest

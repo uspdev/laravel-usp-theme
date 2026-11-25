@@ -19,7 +19,25 @@
         height: 50px;
     }
 
+<<<<<<< Updated upstream
 </style>
+=======
+    /* Barra vermelha para ambiente local */
+    @if(config('app.env') === 'local' && env('USP_THEME_SHOW_ENV_BANNER', true))
+    #skin_login_bar {
+        background-color: #c82333 !important;
+    }
+    #skin_login_bar::before {
+        content: "{{ env('USP_THEME_ENV_LABEL', 'Ambiente de desenvolvimento') }}"; 
+        position: absolute;
+        left: 20px;
+        color: {{ env('USP_THEME_ENV_FONT_COLOR', 'white') }};
+        font-weight: {{ env('USP_THEME_ENV_FONT_WEIGHT', 'bold') }};
+        font-size: {{ env('USP_THEME_ENV_FONT_SIZE', '14px') }};
+    }
+    @endif
+    
+>>>>>>> Stashed changes
 @endsection
 
 @section('skin_header')

@@ -92,7 +92,6 @@ return [
     # valor default para a tag title, dentro da section title.
     # valor pode ser substituido pela aplicação.
     'title' => config('app.name'),
-
     # USP_THEME_SKIN deve ser colocado no .env da aplicação
     'skin' => env('USP_THEME_SKIN', 'uspdev'),
 

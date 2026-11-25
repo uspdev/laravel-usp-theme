@@ -62,6 +62,7 @@ public/vendor
 
 # Escolha o skin a ser utilizado (default=uspdev)
 #USP_THEME_SKIN=
+
 ```
 
 7. Edite ou crie o seu arquivo `resources/views/layouts/app.blade.php` para estender o **laravel-usp-theme**. Veja um exemplo.

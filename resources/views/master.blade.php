@@ -61,6 +61,12 @@
         @yield('skin_footer')
     </div>
 
+    @guest
+        @if (config('senhaunica.allowsLoginLocal') && \Illuminate\Support\Facades\Route::has('SenhaunicaLocalLoginAs'))
+            @include('laravel-usp-theme::partials.login_bar.login_modal')
+        @endif
+    @endguest
+
     <!-- Bibliotecas js do tema e das bibliotecas internas -->
     @yield('javascripts_default')
 

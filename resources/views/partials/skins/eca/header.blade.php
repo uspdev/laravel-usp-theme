@@ -43,21 +43,24 @@
     }
 
     /* Barra vermelha para ambiente local */
-    @if(config('app.env') === 'local' && env('USP_THEME_SHOW_ENV_BANNER', true))
+    @if(config('app.env') === 'local')
     #skin_login_bar {
-        background-color: #cc0000 !important;
+        background-color: #dc3545 !important; /* Vermelho Bootstrap */
     }
     #skin_login_bar::before {
-        content: "{{ env('USP_THEME_ENV_LABEL', 'Ambiente de desenvolvimento') }}"; 
+        content: "Ambiente de desenvolvimento"; 
         position: absolute;
         left: 20px;
-        color: {{ env('USP_THEME_ENV_FONT_COLOR', 'white') }};
-        font-weight: {{ env('USP_THEME_ENV_FONT_WEIGHT', 'bold') }};
-        font-size: {{ env('USP_THEME_ENV_FONT_SIZE', '14px') }};
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
     }
     @endif
-    
+
 @endsection
+
+</style>
+
 
 @section('skin_header')
 <div class="container-fluid d-none d-sm-flex">

@@ -33,7 +33,7 @@
     @auth
     @if (isset(Auth::user()->role)) <strong>{{ Auth::user()->role }}</strong> - @endif
         @php
-            $codpes = Auth::user()?->codpes ?? 0;
+            $codpes = Auth::user()->codpes ?? 0;
             $ramal = \Uspdev\Replicado\Pessoa::obterRamalUsp($codpes);
         @endphp
         @if (isset(Auth::user()->role)) <strong>{{ Auth::user()->role }}</strong> - @endif
